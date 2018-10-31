@@ -1,0 +1,31 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>modules/Panels/NavigationPanel.qml</file>
+        <file>modules/Pages/WordsMode.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>images/bg.png</file>
+        <file>modules/Controls/MenuTile.qml</file>
+        <file>modules/Controls/MenuImageTile.qml</file>
+        <file>modules/Controls/MTButton.qml</file>
+        <file>modules/Panels/HeaderPanel.qml</file>
+        <file>modules/Panels/ChangeModePanel.qml</file>
+        <file>modules/Pages/GrammarMode.qml</file>
+        <file>modules/WordsMode/WordTranslation.qml</file>
+        <file>modules/Controls/WordCard.qml</file>
+        <file>modules/Controls/WordTile.qml</file>
+        <file>images/nopic.png</file>
+        <file>modules/WordsMode/WordTranslationUnit.qml</file>
+        <file>modules/WordsMode/Finish.qml</file>
+        <file>modules/Controls/CLabel.qml</file>
+        <file>fonts/FreeSansBold.ttf</file>
+        <file>fonts/FreeSans.ttf</file>
+        <file>fonts/Ubuntu-B.ttf</file>
+        <file>fonts/Ubuntu-M.ttf</file>
+        <file>fonts/fa-regular-400.ttf</file>
+        <file>fonts/fa-brands-400.ttf</file>
+        <file>fonts/fa-solid-900.ttf</file>
+        <file>modules/Controls/UiLabel.qml</file>
+        <file>modules/Pages/LoginPage.qml</file>
+    </qresource>
+</RCC>
