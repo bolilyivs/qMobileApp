@@ -11,7 +11,7 @@ ApplicationWindow {
     visible: true
     width: 720
     height: 1280
-    title: qsTr("Hello World")
+    title: qsTr("Three Word English")
     id: win
     color: "darkred"
     property int dpi: Screen.pixelDensity * 25.4

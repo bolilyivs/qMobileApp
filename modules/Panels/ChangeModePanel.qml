@@ -14,5 +14,13 @@ Item {
             id: wm
         }
 
+        GrammarMode{
+            id: wm2
+        }
+
+        GameModePage{
+            id: wm3
+        }
+
     }
 }

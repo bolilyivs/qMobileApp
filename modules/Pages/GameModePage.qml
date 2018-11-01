@@ -5,22 +5,15 @@ import "../Controls"
 import "../Panels"
 Item {
     height: childrenRect.height
-    width: dp(400)
+
     ColumnLayout{
         width: parent.width
         spacing: dp(15)
 
+
         HeaderPanel{
-            text: "Words"
+            text: "Game Mode"
             Layout.fillWidth: true
-        }
-
-
-        MenuTile{
-            textColor: "white"
-            text: "Комплекс"
-            Layout.fillWidth: true
-            height: dp(200)
         }
 
         GridLayout{
@@ -32,12 +25,12 @@ Item {
             columns: 2
 
             Repeater{
-                model: [["Карточки", "cards"],
-                    ["Повторение", "repeat"],
-                    ["Слово - перевод", "wordtr"],
+                model: [["Кроссворд", "crossword"],
+                    ["Quick words", "repeat"],
+                    /*["Слово - перевод", "wordtr"],
                     ["Перевод - слово", "trword"],
                     ["Построение слов", "constrWords"],
-                    ["Тренировка слуха", "hearing"]]
+                    ["Тренировка слуха", "hearing"]*/]
 
                 MenuTile{
                     textColor: "white"
@@ -45,14 +38,13 @@ Item {
                     Layout.fillWidth: true
                     height: dp(150)
                     onClicked: changeMode(modelData[1])
-                    Component.onCompleted: {
-                        if(text == "Слово - перевод"){
-                            bgColor = "#900a87ad"
-                        }
-                    }
+                    //Component.onCompleted: {
+                      //  if(text == "Слово - перевод"){
+                        //    bgColor = "#900a87ad"
+                        //}
+                    //}
                 }
             }
-
         }
     }
 

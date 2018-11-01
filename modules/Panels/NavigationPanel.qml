@@ -6,6 +6,7 @@ import "../Controls"
 
 
 Rectangle{
+    id: root
     height: dp(70)
     color: "#900a87ad"
 
@@ -47,7 +48,52 @@ Rectangle{
         }
 
         MTButton{
+            id: menuButton
             text: "\uf085"
+            onClicked: menu.open()
+        }
+    }
+
+    Drawer{
+        id: menu
+        width: 0.4 * win.width
+        height: win.height
+
+        Image{
+            id: bg
+            anchors.fill: parent
+            source: "qrc:/images/bg.png"
+        }
+
+        ColumnLayout{
+            anchors.fill: parent
+            spacing: 15
+            SlideMenuButton{
+                text: "achivment"
+                font.pixelSize: 25
+                Layout.fillWidth: true
+                implicitHeight: dp(100)
+            }
+
+            SlideMenuButton{
+                text: "achivment"
+                font.pixelSize: 25
+                Layout.fillWidth: true
+                implicitHeight: dp(100)
+            }
+
+            Item{
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+            }
+
+            SlideMenuButton{
+                text: "exit"
+                font.pixelSize: 25
+                Layout.fillWidth: true
+                implicitHeight: dp(100)
+                onClicked: Qt.quit()
+            }
         }
     }
 }

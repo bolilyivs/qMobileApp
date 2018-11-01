@@ -24,7 +24,6 @@ Rectangle{
         id: lbl
         anchors.fill: parent
         anchors.margins: dp(10)
-        text: modelData
         color: "white"
         font.pixelSize: dp(25)
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere

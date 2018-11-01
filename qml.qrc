@@ -27,5 +27,7 @@
         <file>fonts/fa-solid-900.ttf</file>
         <file>modules/Controls/UiLabel.qml</file>
         <file>modules/Pages/LoginPage.qml</file>
+        <file>modules/Pages/GameModePage.qml</file>
+        <file>modules/Controls/SlideMenuButton.qml</file>
     </qresource>
 </RCC>
