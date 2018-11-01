@@ -5,6 +5,12 @@
 #include <QTextToSpeech>
 #include <QVector>
 
+/*
+ * Класс-прослойка для работы с
+ * сентизатором в QML
+*/
+
+
 class TTSpeech : public QObject
 {
     Q_OBJECT

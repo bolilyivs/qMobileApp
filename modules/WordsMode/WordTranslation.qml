@@ -1,3 +1,9 @@
+/*
+Режим слово-перевод
+
+*/
+
+
 import QtQuick 2.11
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.4

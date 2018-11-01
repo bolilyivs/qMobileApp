@@ -1,3 +1,13 @@
+/*
+ Окно приложения
+ Входят следующие элементы:
+ *Навигационное окно
+ *Страница приложения
+ *Сентизатор речи
+ *Функции
+ *Шрифты
+*/
+
 import QtQuick 2.11
 import QtQuick.Window 2.11
 import QtQuick.Layouts 1.3
@@ -104,6 +114,4 @@ ApplicationWindow {
         id: aweFont
         source: "qrc:/fonts/fa-solid-900.ttf"
     }
-
-
 }
