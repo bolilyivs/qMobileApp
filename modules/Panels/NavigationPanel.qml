@@ -58,6 +58,8 @@ Rectangle{
         id: menu
         width: 0.4 * win.width
         height: win.height
+        edge: Qt.RightEdge
+
 
         Image{
             id: bg
