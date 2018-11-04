@@ -19,8 +19,8 @@ import "modules/Pages"
 
 ApplicationWindow {
     visible: true
-    width: 720
-    height: 1280
+    width: 600
+    height: 1000
     title: qsTr("Three Word English")
     id: win
     color: "darkred"
@@ -67,6 +67,7 @@ ApplicationWindow {
         }
     }
 
+    /*
     TTSpeech{
             id: speech
             volume: 0.3
@@ -76,7 +77,7 @@ ApplicationWindow {
                 setLocal(TTSpeech.English, TTSpeech.USA)
                 console.log(voicesList)
             }
-        }
+        }*/
 
     function changeMode(mode){
         var obj

@@ -29,5 +29,7 @@
         <file>modules/Pages/LoginPage.qml</file>
         <file>modules/Pages/GameModePage.qml</file>
         <file>modules/Controls/SlideMenuButton.qml</file>
+        <file>modules/GrammarMode/Chapter1/SentenceCreator.qml</file>
+        <file>modules/Controls/SentencePart.qml</file>
     </qresource>
 </RCC>

@@ -6,6 +6,7 @@
 import QtQuick 2.11
 import QtQuick.Controls 2.4
 import "../Pages"
+import "../GrammarMode/Chapter1"
 
 Item {
     height: sv.currentItem.childrenRect.height + dp(100)
@@ -18,9 +19,15 @@ Item {
         WordsMode{
             id: wm
         }
-
+/*
         GrammarMode{
             id: wm2
+        }
+*/
+        SentenceCreator{
+            id: wm2
+            sentence: "I am robot".split(" ")
+            sentenceTranslate: "Я есть робот"
         }
 
         GameModePage{
