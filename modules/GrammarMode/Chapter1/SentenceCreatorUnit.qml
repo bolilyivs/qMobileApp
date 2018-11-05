@@ -51,6 +51,8 @@ Item {
                 }
             ]
 
+            Behavior on color{ ColorAnimation{ duration: 1000 }}
+
             ColumnLayout{
                 anchors.fill: parent
                 spacing: 0
@@ -78,10 +80,17 @@ Item {
                     Layout.fillHeight: true
 
                     GridLayout{
+                        id: glSentence
                         anchors.fill: parent
                         anchors.margins: 20
-                        id: glSentence
+                        rowSpacing: 0
+                        columnSpacing: 0
+                        columns: 4
                     }
+                }
+                Item{
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
                 }
             }
         }
@@ -96,14 +105,20 @@ Item {
         //Контейнер частей предложения
         Item{
             Layout.fillWidth: true
-            Layout.fillHeight: true
+            height: glbottom.childrenRect.height
             GridLayout{
                 id: glbottom
-                anchors.fill: parent
+                width: parent.width
                 rowSpacing: 1
                 columnSpacing: 1
                 flow: GridLayout.LeftToRight
+                columns: 4
             }
+        }
+
+        Item{
+            Layout.fillWidth: true
+            Layout.fillHeight: true
         }
     }
 
@@ -121,13 +136,12 @@ Item {
         clearArray(glbottom.children)
         clearArray(glSentence.children)
 
-        for(var i in sentence){
-            console.log(sentence)
+        var lsentence = shuffle(sentence)
+
+        for(var i in lsentence){
             if(csp.status == Component.Ready ){
                 var obj = csp.createObject(glbottom)
-                obj.text = sentence[i]
-                obj.color = ["#60FF0000", "#6000FF00", "#600000FF"][i%3]
-                console.log(obj.color, obj.height, obj.width)
+                obj.text = lsentence[i]
             }
         }
     }
@@ -140,14 +154,29 @@ Item {
         }
     }
 
+    function shuffle(array){
+        var larray = array.slice()
+        var sharr = []
+        console.log(larray)
+        while(larray.length>0){
+            var i = Math.round(Math.random()*100) % larray.length
+            sharr.push(larray[i])
+            larray.splice(i, 1)
+        }
+        return sharr
+    }
+
 
 
     //Компонент части предложения
     Component{
         id: csp
         SentencePart{
+            Layout.alignment : Qt.AlignTop | Qt.AlignLeft
+            Layout.fillWidth: true
             onMoveTop: {
                 parent = glSentence
+                color = ["#40FF0000", "#4000FF00", "#400000FF", "#40FF00FF", "#4000FFFF"][glbottom.children.length % 5]
             }
             onMoveBottom: parent = glbottom
         }

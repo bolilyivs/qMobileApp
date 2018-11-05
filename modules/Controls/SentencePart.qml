@@ -8,8 +8,6 @@ Item{
     property alias color: bg.color
     property bool isTop: false
 
-    Layout.fillWidth: true
-
     signal moveTop()
     signal moveBottom()
 
@@ -17,21 +15,23 @@ Item{
         id: bg
         radius: 5
         anchors.fill: parent
-        color: "#9000AAFF"
-        border.color: "black"
+        color: "#5000AAFF"
     }
 
-
-    width: (lbl.implicitWidth > 80 ) ? lbl.implicitWidth + lbl.x*2 : 80
+    width: 80
     height: 60
 
     Label{
         id: lbl
-        x: 15
-        height: parent.height
+        anchors.fill: parent
+        anchors.margins: 5
         font.pixelSize: 30
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
+        onTextChanged: {
+            root.width = text.length * font.pixelSize*2
+            Layout.minimumWidth = root.width
+        }
     }
 
     MouseArea{

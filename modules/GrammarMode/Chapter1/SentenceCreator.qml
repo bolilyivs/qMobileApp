@@ -5,14 +5,13 @@ import "../../Controls"
 
 Item {
     id: root
-    anchors.fill: parent
 
     property int index: 0
     property int corrects: 0
     property bool isCorrect: true
 
     property var sentences: [
-        "I am a_man",
+        "I am a_man and he is worker",
         "You are a_robot",
         "He is a_student",
         "She is a_doctor",
@@ -20,7 +19,7 @@ Item {
     ]
 
     property var translates: [
-        "Я (есть) человек",
+        "Я (есть) человек, а он рабочий",
         "Ты (есть) роборт",
         "Он (есть) студент",
         "Она (есть) доктор",
@@ -76,7 +75,7 @@ Item {
 
     Timer{
         id: timer
-        interval: 500;
+        interval: 1000;
         property bool isNext: false
         onTriggered: {
             if(isNext)
