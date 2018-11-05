@@ -4,8 +4,6 @@ import QtQuick.Controls 2.4
 import "../../Controls"
 
 Item {
-    height: 1000
-    width: 600
     property var sentence
     property var currentSentence
     property string sentenceTranslate
@@ -22,6 +20,7 @@ Item {
         anchors.fill: parent
         //Карточка предложения
         Rectangle{
+
             id: card
             color: "#90FFFFFF"
             height: 400
@@ -90,7 +89,7 @@ Item {
         Button{
             text: "Next"
             Layout.fillWidth: true
-            height: 80
+            implicitHeight: 80
             onClicked: next()
         }
 

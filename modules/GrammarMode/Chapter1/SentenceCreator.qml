@@ -5,32 +5,32 @@ import "../../Controls"
 
 Item {
     id: root
-    height: 1000
-    width: 600
+    anchors.fill: parent
 
     property int index: 0
     property int corrects: 0
-     property bool isCorrect: true
+    property bool isCorrect: true
 
     property var sentences: [
-     "I am a_man",
-     "You are a_robot",
-     "He is a_student",
-     "She is a_doctor",
-     "They are androids"
+        "I am a_man",
+        "You are a_robot",
+        "He is a_student",
+        "She is a_doctor",
+        "They are androids"
     ]
 
     property var translates: [
-     "Я (есть) человек",
-     "Ты (есть) роборт",
-     "Он (есть) студент",
-     "Она (есть) доктор",
-     "Они (есть) андроиды"
+        "Я (есть) человек",
+        "Ты (есть) роборт",
+        "Он (есть) студент",
+        "Она (есть) доктор",
+        "Они (есть) андроиды"
     ]
 
     SentenceCreatorUnit{
         id: scu
         anchors.fill: parent
+        anchors.margins: 10
         sentence: getSentenceParts(sentences[index])
         sentenceTranslate: translates[index]
         onNext: checkAnswer()
