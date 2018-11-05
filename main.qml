@@ -67,7 +67,7 @@ ApplicationWindow {
         }
     }
 
-    /*
+/*
     TTSpeech{
             id: speech
             volume: 0.3
@@ -81,9 +81,15 @@ ApplicationWindow {
 
     function changeMode(mode){
         var obj
+        var str = ""
         if(mode === "wordtr"){
-            var str = "qrc:/modules/WordsMode/WordTranslation.qml"
+            str = "qrc:/modules/WordsMode/WordTranslation.qml"
         }
+        if(mode === "chapter1"){
+            str = "qrc:/modules/GrammarMode/Chapter1/SentenceCreator.qml"
+            console.log(str)
+        }
+
         stView.push(createObject(str, pages))
     }
 

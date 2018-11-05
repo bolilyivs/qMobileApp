@@ -19,15 +19,10 @@ Item {
         WordsMode{
             id: wm
         }
-/*
+
         GrammarMode{
             id: wm2
-        }
-*/
-        SentenceCreator{
-            id: wm2
-            sentence: "I am robot".split(" ")
-            sentenceTranslate: "Я есть робот"
+
         }
 
         GameModePage{

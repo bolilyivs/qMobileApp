@@ -31,5 +31,6 @@
         <file>modules/Controls/SlideMenuButton.qml</file>
         <file>modules/GrammarMode/Chapter1/SentenceCreator.qml</file>
         <file>modules/Controls/SentencePart.qml</file>
+        <file>modules/GrammarMode/Chapter1/SentenceCreatorUnit.qml</file>
     </qresource>
 </RCC>

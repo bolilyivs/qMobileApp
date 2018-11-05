@@ -27,19 +27,19 @@ Item {
             Layout.fillHeight: true
 
             Repeater{
-                model: [["Chapter 1", "cards"],
-                    ["Chapter 2", "repeat"],
-                    ["Chapter 3", "wordtr"],
-                    ["Chapter 4", "trword"],
-                    ["Chapter 5", "constrWords"],
-                    ["Chapter 6", "hearing"]]
+                model: [["Chapter 1", "chapter1"],
+                    ["Chapter 2", "chapter2"],
+                    ["Chapter 3", "chapter3"],
+                    ["Chapter 4", "chapter4"],
+                    ["Chapter 5", "chapter5"],
+                    ["Chapter 6", "chapter6"]]
 
                 MenuTile{
                     textColor: "white"
                     text: modelData[0]
                     Layout.fillWidth: true
                     height: dp(150)
-                    onClicked: console.log(modelData[1])
+                    onClicked: changeMode(modelData[1])
                 }
             }
 
