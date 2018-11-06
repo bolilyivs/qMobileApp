@@ -92,7 +92,6 @@ ApplicationWindow {
         }
         if(mode === "chapter1"){
             str = "qrc:/modules/GrammarMode/Chapter1/SentenceCreator.qml"
-            console.log(str)
         }
 
         stView.push(createObject(str, pages))

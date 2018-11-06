@@ -42,15 +42,16 @@ Item {
             if(scu.sentence[i] !== scu.currentSentence[i]){
                 isCorrect = false
                 scu.status = "wrong"
+                speech.say("Wrong")
                 timer.start()
                 return
             }
         }
         if(isCorrect){
-            corrects++          
+            corrects++
         }
         scu.status = "correct"
-        speech.say(scu.sentence.join(" "))
+        speech.say("Right! " + scu.sentence.join(" "))
         timer.isNext = true
         timer.start()
     }

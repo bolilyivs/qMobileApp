@@ -68,16 +68,22 @@ Item {
                 anchors.fill: parent
                 text: {
                     var res = corrects/countCards
-                    if(res > 0.9)
+                    if(res > 0.9){
+                        speech.say("Perfect!")
                         return "Perfect\n\uf005\uf005\uf005\uf005\uf005"
-                    else if(res > 0.7)
+                    }else if(res > 0.7){
+                        speech.say("Good!")
                         return "Good\n\uf005\uf005\uf005\uf005"
-                    else if(res > 0.5)
+                    }else if(res > 0.5){
+                        speech.say("Not bad!")
                         return "Not bad\n\uf005\uf005\uf005"
-                    else if(res > 0.2)
+                    }else if(res > 0.2){
+                        speech.say("Bad!")
                         return "Bad\n\uf005\uf005"
-                    else
+                    }else{
+                        speech.say("Very bad!")
                         return "Very bad\n\uf005"
+                    }
                 }
 
                 color: "white"

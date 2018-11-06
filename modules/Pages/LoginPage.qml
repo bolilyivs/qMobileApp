@@ -20,14 +20,9 @@ Rectangle {
         anchors.fill: parent
         anchors.margins: 5
 
-        Item{
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-        }
-
         Rectangle{
             Layout.fillWidth: true
-            height: 200
+            Layout.preferredHeight: 180
             color: "#00000000"
             CLabel{
                 anchors.fill: parent
@@ -36,17 +31,11 @@ Rectangle {
                 font.weight: Font.Bold
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-
-
             }
-        }
-        Item{
-            Layout.fillWidth: true
-            Layout.fillHeight: true
         }
 
         Rectangle{
-            height: 300
+            Layout.preferredHeight: 300
             Layout.fillWidth: true
             radius: 6
             color: "#CCFFFFFF"
@@ -67,8 +56,6 @@ Rectangle {
                         horizontalAlignment: Text.AlignHCenter
                     }
                 }
-
-
 
                 TextField{
                     id: login
@@ -100,12 +87,14 @@ Rectangle {
 
             }
         }
+
         Item{
             Layout.fillWidth: true
             Layout.fillHeight: true
         }
+
         Rectangle{
-            height: 100
+            height: 80
             Layout.fillWidth: true
             color: "#00000000"
             RowLayout{

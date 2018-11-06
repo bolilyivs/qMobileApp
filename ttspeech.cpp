@@ -9,7 +9,8 @@ TTSpeech::TTSpeech(QObject *parent) : QObject(parent)
 
 void TTSpeech::say(const QString &text)
 {
-    mSpeech->say(text);
+    if(mSpeech->state() == QTextToSpeech::Ready)
+        mSpeech->say(text);
 }
 void TTSpeech::pause()
 {
