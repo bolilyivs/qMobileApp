@@ -19,6 +19,10 @@ Rectangle{
             color: "#FF000000";
         }
         GradientStop {
+            position: 0.60;
+            color: "#30000000";
+        }
+        GradientStop {
             position: 1.00;
             color: "#00000000";
         }

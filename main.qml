@@ -72,7 +72,7 @@ ApplicationWindow {
         }
     }
 
-/*
+
     TTSpeech{
             id: speech
             volume: 0.3
@@ -82,7 +82,7 @@ ApplicationWindow {
                 setLocal(TTSpeech.English, TTSpeech.USA)
                 console.log(voicesList)
             }
-        }*/
+        }
 
     function changeMode(mode){
         var obj

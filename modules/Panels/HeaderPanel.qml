@@ -41,7 +41,7 @@ RowLayout{
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             color: "white"
-            font.pixelSize: dp(60)
+            font.pixelSize: dp(40)
             font.weight: Font.Bold
             layer.enabled: true
             layer.effect: DropShadow {

@@ -25,33 +25,8 @@ Item {
             color: "#BBFFFFFF"
             height: 400
             Layout.fillWidth: true
+            Layout.fillHeight: true
             radius: 30
-            state: status
-            states:[
-                State {
-                    name: "normal"
-                    PropertyChanges {
-                        target: card
-                        color: "#BBFFFFFF"
-                    }
-                },
-                State {
-                    name: "correct"
-                    PropertyChanges {
-                        target: card
-                        color: "#90009900"
-                    }
-                },
-                State {
-                    name: "wrong"
-                    PropertyChanges {
-                        target: card
-                        color: "#90990000"
-                    }
-                }
-            ]
-
-            Behavior on color{ ColorAnimation{ duration: 1000 }}
 
             ColumnLayout{
                 anchors.fill: parent
@@ -60,11 +35,12 @@ Item {
                 Item{
                     Layout.fillWidth: true
                     height: 80
-                    Label{
+                    CLabel{
                         anchors.fill: parent
                         anchors.margins: 10
                         text: sentenceTranslate
-                        font.pixelSize: 30
+                        font.pixelSize: 20
+                        color: "#BB000000"
                         verticalAlignment: Text.AlignBottom
                     }
                 }
@@ -77,35 +53,79 @@ Item {
                 //Контейнер предложения
                 Item{
                     Layout.fillWidth: true
-                    Layout.fillHeight: true
+                    Layout.minimumHeight: 50
+                    Layout.preferredHeight: glSentence.childrenRect.height+20
 
                     GridLayout{
                         id: glSentence
                         anchors.fill: parent
-                        anchors.margins: 20
+                        anchors.margins: 10
                         rowSpacing: 0
                         columnSpacing: 0
                         columns: 4
                     }
                 }
+
                 Item{
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                 }
+                Button{
+                    text: "Next"
+                    Layout.fillWidth: true
+                    Layout.margins: 30
+                    implicitHeight: 80
+                    onClicked: next()
+                    background: Rectangle{
+                        id:enb
+                        radius: 20
+                        color: "transparent"
+                        border.color: "#BB000000"
+                        border.width: 2
+
+                        state: status
+                        states:[
+                            State {
+                                name: "normal"
+                                PropertyChanges {
+                                    target: enb
+                                    color: "transparent"
+                                }
+                            },
+                            State {
+                                name: "correct"
+                                PropertyChanges {
+                                    target: enb
+                                    color: "#90009900"
+                                }
+                            },
+                            State {
+                                name: "wrong"
+                                PropertyChanges {
+                                    target: enb
+                                    color: "#90990000"
+                                }
+                            }
+                        ]
+                        Behavior on color{ ColorAnimation{ duration: 1000 }}
+                    }
+                }
+
             }
         }
 
-        Button{
-            text: "Next"
+        Item{
             Layout.fillWidth: true
-            implicitHeight: 80
-            onClicked: next()
+            Layout.fillHeight: true
         }
+
+
 
         //Контейнер частей предложения
         Rectangle{
             Layout.fillWidth: true
-            Layout.fillHeight: true
+            Layout.minimumHeight: 50
+            Layout.preferredHeight: glbottom.childrenRect.height+20
             color: "#BBFFFFFF"
             radius: 30
             GridLayout{

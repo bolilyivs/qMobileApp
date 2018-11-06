@@ -25,11 +25,11 @@ Item{
         id: lbl
         anchors.fill: parent
         anchors.margins: 5
-        font.pixelSize: 30
+        font.pixelSize: 20
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
         onTextChanged: {
-            root.width = text.length * font.pixelSize*2
+            root.width = text.length * font.pixelSize*1.5
             Layout.minimumWidth = root.width
         }
     }

@@ -11,19 +11,21 @@ Item {
     property bool isCorrect: true
 
     property var sentences: [
-        "I am a_man and he is worker",
+        "I am a_man",
         "You are a_robot",
         "He is a_student",
         "She is a_doctor",
-        "They are androids"
+        "They are androids",
+        "The_dog is a_pet and it is a_pug"
     ]
 
     property var translates: [
-        "Я (есть) человек, а он рабочий",
+        "Я (есть) человек",
         "Ты (есть) роборт",
         "Он (есть) студент",
         "Она (есть) доктор",
-        "Они (есть) андроиды"
+        "Они (есть) андроиды",
+        "Собака - животное и она - мопс",
     ]
 
     SentenceCreatorUnit{
@@ -45,9 +47,10 @@ Item {
             }
         }
         if(isCorrect){
-            corrects++
-            scu.status = "correct"
+            corrects++          
         }
+        scu.status = "correct"
+        speech.say(scu.sentence.join(" "))
         timer.isNext = true
         timer.start()
     }
