@@ -14,23 +14,14 @@ Rectangle{
     property alias font: lbl.font
     signal clicked()
     radius: dp(20)
-    color: "#90000000"
-
-
-    layer.enabled: true
-    layer.effect: DropShadow {
-        horizontalOffset: 0
-        verticalOffset: 0
-        radius: 5
-        samples: 6
-    }
+    color: "#CCFFFFFF"
 
     CLabel{
         id: lbl
         anchors.fill: parent
         anchors.margins: dp(10)
         text: modelData
-        color: "white"
+        color: "#BB000000"
         font.pixelSize: dp(20)
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
@@ -55,7 +46,7 @@ Rectangle{
             name: "pas"
             PropertyChanges {
                 target: root
-                color: "#90000000"
+                color: "#CCFFFFFF"
             }
         },
         State {

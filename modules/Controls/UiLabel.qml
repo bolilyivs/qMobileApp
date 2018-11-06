@@ -10,7 +10,6 @@ Label {
     color: "white"
     font.family: aweFont.name
     font.bold: true
-    font.italic: true
     font.pixelSize: 12
     verticalAlignment: Text.AlignVCenter
 }

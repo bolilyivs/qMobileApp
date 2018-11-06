@@ -13,9 +13,9 @@ Item{
 
     Rectangle{
         id: bg
-        radius: 5
+        radius: 10
         anchors.fill: parent
-        color: "#5000AAFF"
+        color: "#9000AAFF"
     }
 
     width: 80

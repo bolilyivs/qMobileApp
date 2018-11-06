@@ -22,7 +22,7 @@ Item {
         Rectangle{
 
             id: card
-            color: "#90FFFFFF"
+            color: "#BBFFFFFF"
             height: 400
             Layout.fillWidth: true
             radius: 30
@@ -32,7 +32,7 @@ Item {
                     name: "normal"
                     PropertyChanges {
                         target: card
-                        color: "#90FFFFFF"
+                        color: "#BBFFFFFF"
                     }
                 },
                 State {
@@ -103,22 +103,20 @@ Item {
         }
 
         //Контейнер частей предложения
-        Item{
+        Rectangle{
             Layout.fillWidth: true
-            height: glbottom.childrenRect.height
+            Layout.fillHeight: true
+            color: "#BBFFFFFF"
+            radius: 30
             GridLayout{
                 id: glbottom
-                width: parent.width
+                anchors.fill: parent
+                anchors.margins: 10
                 rowSpacing: 1
                 columnSpacing: 1
                 flow: GridLayout.LeftToRight
                 columns: 4
             }
-        }
-
-        Item{
-            Layout.fillWidth: true
-            Layout.fillHeight: true
         }
     }
 

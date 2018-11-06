@@ -21,15 +21,7 @@ Rectangle {
 
     height: dp(250)
     width: parent.width
-    color: "#90000000"
-
-    layer.enabled: true
-    layer.effect: DropShadow {
-        horizontalOffset: 0
-        verticalOffset: 0
-        radius: 5
-        samples: 6
-    }
+    color: "#CCFFFFFF"
 
     ColumnLayout{
         anchors.fill: parent
@@ -49,13 +41,13 @@ Rectangle {
 
                 CLabel{
                     text: countCorrect + " \uf274"
-                    color: "green"
+                    color: "darkgreen"
                     font.family: aweFont.name
                     font.pixelSize: dp(30)
                 }
                 UiLabel{
                     text: countCards + " \uf641"
-                    color: "yellow"
+                    color: "#FFBBBB00"
                     font.family: aweFont.name
                     font.pixelSize: dp(30)
                 }
@@ -86,7 +78,7 @@ Rectangle {
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
                     font.pixelSize: dp(35)
-                    color: "white"
+                    color: "#BB000000"
                     height: dp(10)
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 }
@@ -96,7 +88,7 @@ Rectangle {
                     Layout.fillWidth: true
                     horizontalAlignment: Text.AlignHCenter
                     font.pixelSize: dp(15)
-                    color: "white"
+                    color: "#BB000000"
                     height: dp(10)
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 }

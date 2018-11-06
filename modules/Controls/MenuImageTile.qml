@@ -13,8 +13,11 @@ MenuTile{
 
     Image{
         id: img
-        z: -1
+        z: 5
+        fillMode: Image.Stretch
         mipmap: true
+        sourceSize.width: width
+        sourceSize.height: height
     }
 
 }

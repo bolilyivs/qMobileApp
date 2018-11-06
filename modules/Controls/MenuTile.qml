@@ -12,24 +12,18 @@ Rectangle{
     property alias textColor: lbl.color
     property alias text: lbl.text
     property alias font: lbl.font
-    property color bgColor: "#90000000"
+    property color bgColor: "#CCFFFFFF"
+    radius: 10
     signal clicked()
+    clip: true
 
     color: bgColor
-
-    layer.enabled: true
-    layer.effect: DropShadow {
-        horizontalOffset: 0
-        verticalOffset: 0
-        radius: 5
-        samples: 6
-    }
 
     CLabel{
         id: lbl
         anchors.fill: parent
         anchors.margins: dp(10)
-        color: "white"
+        color: "#BB000000"
         font.pixelSize: dp(25)
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
     }
@@ -40,6 +34,7 @@ Rectangle{
             timer.start()
             root.state = "clicked"
         }
+        z:10
     }
 
     Behavior on color{
@@ -67,7 +62,7 @@ Rectangle{
 
     Timer{
         id: timer
-        interval: 1000
+        interval: 200
         onTriggered: {
             root.clicked()
             root.state = "pas"

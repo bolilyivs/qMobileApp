@@ -13,16 +13,16 @@ import "../Controls"
 Rectangle{
     id: root
     height: dp(70)
-    color: "#900a87ad"
-
-    layer.enabled: true
-    layer.effect: DropShadow {
-        horizontalOffset: 0
-        verticalOffset: 0
-        radius: 5
-        samples: 6
+    gradient: Gradient {
+        GradientStop {
+            position: 0.00;
+            color: "#FF000000";
+        }
+        GradientStop {
+            position: 1.00;
+            color: "#00000000";
+        }
     }
-
 
     RowLayout{
         anchors.fill: parent
@@ -61,46 +61,99 @@ Rectangle{
 
     Drawer{
         id: menu
-        width: 0.4 * win.width
+        width: 0.5 * win.width
         height: win.height
         edge: Qt.RightEdge
 
 
         Image{
-            id: bg
+            id: bgSlide
             anchors.fill: parent
-            source: "qrc:/images/bg.png"
+            source: "qrc:/images/bg3.png"
+            fillMode: Image.PreserveAspectCrop
+            opacity: 0.5
+        }
+        Flickable{
+            anchors.fill: parent
+            contentHeight: dcl.childrenRect.height
+            ColumnLayout{
+                id: dcl
+                spacing: 1
+                width: menu.width
+                SlideMenuButton{
+                    text: "achivment"
+                    font.pixelSize: 25
+                    Layout.fillWidth: true
+                    implicitHeight: dp(100)
+                }
+
+                Image{
+                    id: img1
+                    z: 5
+                    fillMode: Image.Stretch
+                    mipmap: true
+                    sourceSize.width: width
+                    sourceSize.height: height
+                    Layout.fillWidth: true
+                    Layout.margins: 10
+                    height: 200
+                    source: "qrc:/images/bg.png"
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                            bg.source = parent.source
+                        }
+                    }
+                }
+
+                Image{
+                    id: img2
+                    z: 5
+                    fillMode: Image.Stretch
+                    mipmap: true
+                    sourceSize.width: width
+                    sourceSize.height: height
+                    Layout.fillWidth: true
+                    Layout.margins: 10
+                    height: 200
+                    source: "qrc:/images/bg2.png"
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                            bg.source = parent.source
+                        }
+                    }
+                }
+
+                Image{
+                    id: img3
+                    z: 5
+                    fillMode: Image.Stretch
+                    mipmap: true
+                    sourceSize.width: width
+                    sourceSize.height: height
+                    Layout.fillWidth: true
+                    Layout.margins: 10
+                    height: 200
+                    source: "qrc:/images/bg3.png"
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                            bg.source = parent.source
+                        }
+                    }
+                }
+
+                SlideMenuButton{
+                    text: "exit"
+                    font.pixelSize: 25
+                    Layout.fillWidth: true
+                    implicitHeight: dp(100)
+                    onClicked: Qt.quit()
+                }
+            }
         }
 
-        ColumnLayout{
-            anchors.fill: parent
-            spacing: 15
-            SlideMenuButton{
-                text: "achivment"
-                font.pixelSize: 25
-                Layout.fillWidth: true
-                implicitHeight: dp(100)
-            }
 
-            SlideMenuButton{
-                text: "achivment"
-                font.pixelSize: 25
-                Layout.fillWidth: true
-                implicitHeight: dp(100)
-            }
-
-            Item{
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-            }
-
-            SlideMenuButton{
-                text: "exit"
-                font.pixelSize: 25
-                Layout.fillWidth: true
-                implicitHeight: dp(100)
-                onClicked: Qt.quit()
-            }
-        }
     }
 }

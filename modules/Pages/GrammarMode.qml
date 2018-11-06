@@ -35,7 +35,6 @@ Item {
                     ["Chapter 6", "chapter6"]]
 
                 MenuTile{
-                    textColor: "white"
                     text: modelData[0]
                     Layout.fillWidth: true
                     height: dp(150)

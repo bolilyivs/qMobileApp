@@ -29,7 +29,12 @@ ApplicationWindow {
     Image{
         id: bg
         anchors.fill: parent
-        source: "qrc:/images/bg.png"
+        fillMode: Image.PreserveAspectCrop
+        source: "qrc:/images/bg2.png"
+        Rectangle{
+            anchors.fill: parent
+            color: "#30000000"
+        }
     }
 
     ColumnLayout{

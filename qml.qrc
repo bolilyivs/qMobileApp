@@ -32,5 +32,7 @@
         <file>modules/GrammarMode/Chapter1/SentenceCreator.qml</file>
         <file>modules/Controls/SentencePart.qml</file>
         <file>modules/GrammarMode/Chapter1/SentenceCreatorUnit.qml</file>
+        <file>images/bg2.png</file>
+        <file>images/bg3.png</file>
     </qresource>
 </RCC>

@@ -38,7 +38,6 @@ Item {
                     ["Тренировка слуха", "hearing"]*/]
 
                 MenuTile{
-                    textColor: "white"
                     text: modelData[0]
                     Layout.fillWidth: true
                     height: dp(150)

@@ -29,19 +29,6 @@ Rectangle {
             Layout.fillWidth: true
             height: 200
             color: "#00000000"
-            layer.enabled: true
-            layer.effect: DropShadow {
-                horizontalOffset: 0
-                verticalOffset: 0
-                radius: 20
-                samples: 30
-                color: "blue"
-                NumberAnimation on radius{
-                    from: 1
-                    to: 40
-                    duration: 5000
-                }
-            }
             CLabel{
                 anchors.fill: parent
                 text: "Three Word\nEnglish"
@@ -62,7 +49,7 @@ Rectangle {
             height: 300
             Layout.fillWidth: true
             radius: 6
-            color: "#90000000"
+            color: "#CCFFFFFF"
             GridLayout{
                 anchors.fill: parent
                 anchors.margins: 20
@@ -75,6 +62,7 @@ Rectangle {
                     UiLabel{
                         anchors.fill: parent
                         text: "\uf508"
+                        color: "#BB000000"
                         font.pixelSize: dp(30)
                         horizontalAlignment: Text.AlignHCenter
                     }
@@ -86,7 +74,7 @@ Rectangle {
                     id: login
                     Layout.fillWidth: true
                     font.pixelSize: dp(30)
-                    color: "white"
+                    color: "#BB000000"
                 }
 
                 Rectangle{
@@ -97,6 +85,7 @@ Rectangle {
                         anchors.fill: parent
                         text: "\uf084"
                         font.pixelSize: dp(30)
+                        color: "#BB000000"
                         horizontalAlignment: Text.AlignHCenter
                     }
                 }
@@ -105,17 +94,10 @@ Rectangle {
                     id: passwd
                     Layout.fillWidth: true
                     font.pixelSize: dp(30)
-                    color: "white"
+                    color: "#BB000000"
                     echoMode: TextInput.Password
                 }
 
-                layer.enabled: true
-                layer.effect: DropShadow {
-                    horizontalOffset: 0
-                    verticalOffset: 0
-                    radius: 5
-                    samples: 6
-                }
             }
         }
         Item{
