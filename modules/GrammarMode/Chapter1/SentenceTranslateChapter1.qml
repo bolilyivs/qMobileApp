@@ -11,7 +11,7 @@ Item {
         [["Оно есть питомец"], ["It is a pet"]],
         [["Он Джон"], ["He is a John"]],
         [["Джон мужчина и он человек"], ["John is a man and he is a human"]],
-        [["Она доктор и она женщина"], ["Mary is a doctor and she is a woman"]],
+        [["Мари доктор и она женщина"], ["Mary is a doctor and she is a woman"]],
         [["Они рабочие"], ["They are workers"]]
     ]
 
