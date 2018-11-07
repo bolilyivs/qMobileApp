@@ -22,8 +22,9 @@ Item {
         }
 
         GridLayout{
+            id: tiles
             Layout.fillWidth: true
-            //height: childrenRect.height
+            Layout.preferredHeight: childrenRect.height
 
             columnSpacing: dp(15)
             rowSpacing: dp(15)
@@ -49,6 +50,10 @@ Item {
                     //}
                 }
             }
+        }
+        Item{
+            Layout.fillWidth: true
+            Layout.preferredHeight: (tiles.preferredHeight<win.height) ? win.height-tiles.preferredHeight : 10
         }
     }
 

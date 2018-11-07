@@ -24,7 +24,7 @@ Rectangle{
         anchors.fill: parent
         anchors.margins: dp(10)
         color: "#BB000000"
-        font.pixelSize: dp(25)
+        font.pixelSize: dp(16)
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
     }
 

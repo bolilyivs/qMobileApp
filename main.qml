@@ -91,8 +91,19 @@ ApplicationWindow {
             str = "qrc:/modules/WordsMode/WordTranslation.qml"
         }
         if(mode === "chapter1"){
-            str = "qrc:/modules/GrammarMode/Chapter1/SentenceCreator.qml"
+            str = "qrc:/modules/GrammarMode/Chapter1/Chapter1Menu.qml"
         }
+        if(mode === "sentenceCreatorChapter1"){
+            str = "qrc:/modules/GrammarMode/Chapter1/SentenceCreatorChapter1.qml"
+        }
+        if(mode === "sentenceTranslateChapter1"){
+            str = "qrc:/modules/GrammarMode/Chapter1/SentenceTranslateChapter1.qml"
+        }
+        if(mode === "rulesChapter1"){
+            str = "qrc:/modules/GrammarMode/Chapter1/RulesChapter1.qml"
+        }
+
+
 
         stView.push(createObject(str, pages))
     }

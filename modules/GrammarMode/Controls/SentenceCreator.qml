@@ -1,39 +1,38 @@
 import QtQuick 2.11
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.4
-import "../../Controls"
 
 Item {
     id: root
+
+    property bool reversCreator: false
 
     property int index: 0
     property int corrects: 0
     property bool isCorrect: true
 
-    property var sentences: [
-        "I am a_man",
-        "You are a_robot",
-        "He is a_student",
-        "She is a_doctor",
-        "They are androids",
-        "The_dog is a_pet and it is a_pug"
-    ]
+    property var inData
 
-    property var translates: [
-        "Я (есть) человек",
-        "Ты (есть) роборт",
-        "Он (есть) студент",
-        "Она (есть) доктор",
-        "Они (есть) андроиды",
-        "Собака - животное и она - мопс",
-    ]
+    property var sentences
+    property var translates
+
+    onInDataChanged: {
+        var arr = shuffle(inData)
+        sentences = []
+        translates = []
+        for(var i=0; i<arr.length; i++){
+            sentences.push(arr[i][0]+"")
+            translates.push(arr[i][1]+"")
+        }
+        scu.sentence = getSentenceParts(sentences[index])
+        scu.sentenceTranslate = translates[index]
+        console.log(sentences)
+    }
 
     SentenceCreatorUnit{
         id: scu
         anchors.fill: parent
         anchors.margins: 10
-        sentence: getSentenceParts(sentences[index])
-        sentenceTranslate: translates[index]
         onNext: checkAnswer()
     }
 
@@ -51,7 +50,10 @@ Item {
             corrects++
         }
         scu.status = "correct"
-        speech.say("Right! " + scu.sentence.join(" "))
+        if(!reversCreator)
+            speech.say(scu.sentence.join(" "))
+        else
+            speech.say(scu.sentenceTranslate)
         timer.isNext = true
         timer.start()
     }
@@ -67,10 +69,14 @@ Item {
             obj.getResults(root.corrects, sentences.length)
             stView.push(obj)
         }
+        scu.sentence = getSentenceParts(sentences[index])
+        scu.sentenceTranslate = translates[index]
     }
 
     function getSentenceParts(sentence){
+        console.log(sentence)
         var sentenceParts = sentence.split(" ")
+        console.log(sentenceParts)
         for(var i in sentenceParts){
             sentenceParts[i] = sentenceParts[i].replace("_", " ")
         }
@@ -86,6 +92,17 @@ Item {
                 nextSentence()
             scu.status = "normal"
         }
+    }
+
+    function shuffle(array){
+        var larray = array.slice()
+        var sharr = []
+        while(larray.length>0){
+            var i = Math.round(Math.random()*100) % larray.length
+            sharr.push(larray[i])
+            larray.splice(i, 1)
+        }
+        return sharr
     }
 }
 

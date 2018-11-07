@@ -29,10 +29,14 @@
         <file>modules/Pages/LoginPage.qml</file>
         <file>modules/Pages/GameModePage.qml</file>
         <file>modules/Controls/SlideMenuButton.qml</file>
-        <file>modules/GrammarMode/Chapter1/SentenceCreator.qml</file>
-        <file>modules/Controls/SentencePart.qml</file>
-        <file>modules/GrammarMode/Chapter1/SentenceCreatorUnit.qml</file>
         <file>images/bg2.png</file>
         <file>images/bg3.png</file>
+        <file>modules/GrammarMode/Chapter1/Chapter1Menu.qml</file>
+        <file>modules/GrammarMode/Chapter1/SentenceCreatorChapter1.qml</file>
+        <file>modules/GrammarMode/Controls/SentenceCreator.qml</file>
+        <file>modules/GrammarMode/Controls/SentenceCreatorUnit.qml</file>
+        <file>modules/GrammarMode/Controls/SentencePart.qml</file>
+        <file>modules/GrammarMode/Chapter1/SentenceTranslateChapter1.qml</file>
+        <file>modules/GrammarMode/Chapter1/RulesChapter1.qml</file>
     </qresource>
 </RCC>

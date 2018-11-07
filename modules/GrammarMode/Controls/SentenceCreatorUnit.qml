@@ -175,7 +175,6 @@ Item {
     function shuffle(array){
         var larray = array.slice()
         var sharr = []
-        console.log(larray)
         while(larray.length>0){
             var i = Math.round(Math.random()*100) % larray.length
             sharr.push(larray[i])
@@ -194,7 +193,6 @@ Item {
             Layout.fillWidth: true
             onMoveTop: {
                 parent = glSentence
-                color = ["#40FF0000", "#4000FF00", "#400000FF", "#40FF00FF", "#4000FFFF"][glbottom.children.length % 5]
             }
             onMoveBottom: parent = glbottom
         }
