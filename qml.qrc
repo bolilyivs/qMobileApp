@@ -38,5 +38,7 @@
         <file>modules/GrammarMode/Controls/SentencePart.qml</file>
         <file>modules/GrammarMode/Chapter1/SentenceTranslateChapter1.qml</file>
         <file>modules/GrammarMode/Chapter1/RulesChapter1.qml</file>
+        <file>modules/AppManager/AppManager.qml</file>
+        <file>modules/AppManager/AppUtils.js</file>
     </qresource>
 </RCC>

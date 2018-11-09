@@ -21,8 +21,15 @@ Item {
         sentences = []
         translates = []
         for(var i=0; i<arr.length; i++){
-            sentences.push(arr[i][0]+"")
-            translates.push(arr[i][1]+"")
+            if(!reversCreator){
+                sentences.push(arr[i]["sentence"]+"")
+                translates.push(arr[i]["translation"]+"")
+            }else{
+                sentences.push(arr[i]["translation"]+"")
+                translates.push(arr[i]["sentence"].replace("_"," ")+"")
+            }
+
+
         }
         scu.sentence = getSentenceParts(sentences[index])
         scu.sentenceTranslate = translates[index]
@@ -41,7 +48,7 @@ Item {
             if(scu.sentence[i] !== scu.currentSentence[i]){
                 isCorrect = false
                 scu.status = "wrong"
-                speech.say("Wrong")
+                app.say("Wrong")
                 timer.start()
                 return
             }
@@ -51,9 +58,9 @@ Item {
         }
         scu.status = "correct"
         if(!reversCreator)
-            speech.say(scu.sentence.join(" "))
+            app.say(scu.sentence.join(" "))
         else
-            speech.say(scu.sentenceTranslate)
+            app.say(scu.sentenceTranslate)
         timer.isNext = true
         timer.start()
     }

@@ -12,7 +12,7 @@ import QtQuick 2.11
 import QtQuick.Window 2.11
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.4
-import TTSpeech 1.0
+import AppManager 1.0
 import "modules/Panels"
 import "modules/Pages"
 
@@ -42,6 +42,7 @@ ApplicationWindow {
 
         NavigationPanel{
             Layout.fillWidth: true
+            Layout.margins: 10
         }
 
         StackView{
@@ -49,17 +50,9 @@ ApplicationWindow {
             Layout.fillWidth: true
             Layout.fillHeight: true
             initialItem: lg
-            Flickable{
-                id: flic
-                clip: true
-                contentHeight: cmp.childrenRect.height
-
-                ChangeModePanel{
-                    id: cmp
-                    width: win.width
-                }
+            ChangeModePanel{
+                id: cmp
             }
-
         }
 
     }
@@ -68,44 +61,16 @@ ApplicationWindow {
         id: pages
         LoginPage{
             id: lg
-            onEnterGuest:stView.push(flic)
+            onEnterGuest:stView.push(cmp)
         }
     }
 
 
-    TTSpeech{
-            id: speech
-            volume: 0.3
-            voice: voicesList[0]
-
-            Component.onCompleted: {
-                setLocal(TTSpeech.English, TTSpeech.USA)
-                console.log(voicesList)
-            }
+    AppManager{
+        id: app
+        onCurrentPageUrlChanged: {
+            stView.push(createObject(currentPageUrl, pages))
         }
-
-    function changeMode(mode){
-        var obj
-        var str = ""
-        if(mode === "wordtr"){
-            str = "qrc:/modules/WordsMode/WordTranslation.qml"
-        }
-        if(mode === "chapter1"){
-            str = "qrc:/modules/GrammarMode/Chapter1/Chapter1Menu.qml"
-        }
-        if(mode === "sentenceCreatorChapter1"){
-            str = "qrc:/modules/GrammarMode/Chapter1/SentenceCreatorChapter1.qml"
-        }
-        if(mode === "sentenceTranslateChapter1"){
-            str = "qrc:/modules/GrammarMode/Chapter1/SentenceTranslateChapter1.qml"
-        }
-        if(mode === "rulesChapter1"){
-            str = "qrc:/modules/GrammarMode/Chapter1/RulesChapter1.qml"
-        }
-
-
-
-        stView.push(createObject(str, pages))
     }
 
     function dp(x){

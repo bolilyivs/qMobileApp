@@ -12,7 +12,7 @@ ToolButton{
     contentItem: UiLabel {
         text: parent.text
         font: parent.font
-        color: "white"
+        color: "#BB000000"
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         elide: Text.ElideRight

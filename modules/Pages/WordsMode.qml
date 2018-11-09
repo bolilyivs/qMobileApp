@@ -6,6 +6,7 @@
 import QtQuick 2.11
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.4
+import AppManager 1.0
 import "../Controls"
 import "../Panels"
 Item {
@@ -36,18 +37,18 @@ Item {
             columns: 2
 
             Repeater{
-                model: [["Карточки", "cards"],
-                    ["Повторение", "repeat"],
-                    ["Слово - перевод", "wordtr"],
-                    ["Перевод - слово", "trword"],
-                    ["Построение слов", "constrWords"],
-                    ["Тренировка слуха", "hearing"]]
+                model: [["Карточки", AppManager.WordTranslate],
+                    ["Повторение", AppManager.WordTranslate],
+                    ["Слово - перевод", AppManager.WordTranslate],
+                    ["Перевод - слово", AppManager.WordTranslate],
+                    ["Построение слов", AppManager.WordTranslate],
+                    ["Тренировка слуха", AppManager.WordTranslate]]
 
                 MenuTile{
                     text: modelData[0]
                     Layout.fillWidth: true
                     height: dp(150)
-                    onClicked: changeMode(modelData[1])
+                    onClicked: app.setPage(modelData[1])
                     Component.onCompleted: {
                         if(text == "Слово - перевод"){
                             bgColor = "#900a87ad"

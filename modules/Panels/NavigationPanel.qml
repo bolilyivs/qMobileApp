@@ -13,23 +13,12 @@ import "../Controls"
 Rectangle{
     id: root
     height: dp(70)
-    gradient: Gradient {
-        GradientStop {
-            position: 0.00;
-            color: "#FF000000";
-        }
-        GradientStop {
-            position: 0.60;
-            color: "#30000000";
-        }
-        GradientStop {
-            position: 1.00;
-            color: "#00000000";
-        }
-    }
+    radius: 10
+    color: "#CCFFFFFF"
 
     RowLayout{
         anchors.fill: parent
+        anchors.margins: 10
 
         MTButton{
             text: {
@@ -54,6 +43,14 @@ Rectangle{
             color: "transparent"
             Layout.fillHeight: true
             Layout.fillWidth: true
+            CLabel{
+                anchors.fill: parent
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+                text: app.userName
+                font.pixelSize: 20
+                color: "#BB000000"
+            }
         }
 
         MTButton{

@@ -9,25 +9,32 @@ import "../Pages"
 import "../GrammarMode/Chapter1"
 
 Item {
-    height: sv.currentItem.childrenRect.height + dp(100)
-    width: parent.width
-    SwipeView{
-        id: sv
+    Flickable{
+        id: flic
+        clip: true
         anchors.fill: parent
-        padding: dp(20)
-        spacing: dp(20)
-        WordsMode{
-            id: wm
+        contentHeight: sv.currentItem.childrenRect.height + dp(100)
+        width: parent.width
+        SwipeView{
+            id: sv
+            anchors.fill: parent
+            padding: dp(20)
+            spacing: dp(20)
+            WordsMode{
+                id: wm
+            }
+
+            GrammarMode{
+                id: wm2
+
+            }
+
+            GameModePage{
+                id: wm3
+            }
+
         }
-
-        GrammarMode{
-            id: wm2
-
-        }
-
-        GameModePage{
-            id: wm3
-        }
-
     }
+
+
 }

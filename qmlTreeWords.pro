@@ -14,7 +14,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-    ttspeech.cpp
+    appmanager.cpp
 
 RESOURCES += qml.qrc
 
@@ -42,4 +42,5 @@ DISTFILES += \
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
 HEADERS += \
-    ttspeech.h
+    appmanager.h \
+    stringconstants.h

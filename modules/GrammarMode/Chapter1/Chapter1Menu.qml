@@ -2,6 +2,7 @@
 import QtQuick 2.11
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.4
+import AppManager 1.0
 import "../../Controls"
 import "../../Panels"
 Item {
@@ -25,7 +26,7 @@ Item {
             text: "Правила"
             Layout.fillWidth: true
             height: dp(200)
-            onClicked: changeMode("rulesChapter1")
+            onClicked: app.setPage(AppManager.Chapter1Rules)
         }
 
         GridLayout{
@@ -40,14 +41,14 @@ Item {
                 text: "Конструктор предложений"
                 Layout.fillWidth: true
                 height: dp(150)
-                onClicked: changeMode("sentenceCreatorChapter1")
+                onClicked: app.setPage(AppManager.Chapter1SentenceCreator)
             }
 
             MenuTile{
                 text: "Перевод предложений"
                 Layout.fillWidth: true
                 height: dp(150)
-                onClicked: changeMode("sentenceTranslateChapter1")
+                onClicked: app.setPage(AppManager.Chapter1SentenceTranslate)
             }
         }
         Item{

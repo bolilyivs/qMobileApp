@@ -12,9 +12,11 @@ import "../Controls"
 Item {
     id: root
     property int corrects: 0
-    property var cards: [["house", "дом"], ["car", "автомобиль"],
-        ["day", "день"], ["sky","небо"], ["tree", "дерево"],
-        ["black", "черный"]]
+    property var cards: app.currentData
+
+    QtObject{
+       Component.onCompleted: app.receiveWordCards()
+    }
 
     StackView{
         id:lsv
@@ -24,8 +26,8 @@ Item {
 
             WordTranslationUnit{
                 id: card
-                word: modelData[0]
-                correctTranslation: modelData[1]
+                word: modelData["word"]
+                correctTranslation: modelData["translation"]
                 countCorrect: corrects
                 countCards: cards.length - index
                 onCorrectChanged: {
@@ -50,9 +52,9 @@ Item {
 
                     for(var i=0; i<3;){
                         var rand = Math.round((Math.random() * 10)) % tempWords.length
-                        if(tempWords[rand][1] === correctTranslation)
+                        if(tempWords[rand]["translation"] === correctTranslation)
                             continue;
-                        trnsl.push(tempWords[rand][1])
+                        trnsl.push(tempWords[rand]["translation"])
                         tempWords.splice(rand, 1)
                         console.log(tempWords)
                         i++

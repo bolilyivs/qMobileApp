@@ -44,9 +44,9 @@ Item {
                         if(text === correctTranslation){
                             correct = true
                             state = "correct"
-                            speech.say("Right!")
+                            app.say("Right!")
                         }else{
-                            speech.say("Wrong!")
+                            app.say("Wrong!")
                             state = "wrong"
                         }
                         timer.start()

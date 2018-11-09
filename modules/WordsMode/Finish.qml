@@ -69,19 +69,19 @@ Item {
                 text: {
                     var res = corrects/countCards
                     if(res > 0.9){
-                        speech.say("Perfect!")
+                        app.say("Perfect!")
                         return "Perfect\n\uf005\uf005\uf005\uf005\uf005"
                     }else if(res > 0.7){
-                        speech.say("Good!")
+                        app.say("Good!")
                         return "Good\n\uf005\uf005\uf005\uf005"
                     }else if(res > 0.5){
-                        speech.say("Not bad!")
+                        app.say("Not bad!")
                         return "Not bad\n\uf005\uf005\uf005"
                     }else if(res > 0.2){
-                        speech.say("Bad!")
+                        app.say("Bad!")
                         return "Bad\n\uf005\uf005"
                     }else{
-                        speech.say("Very bad!")
+                        app.say("Very bad!")
                         return "Very bad\n\uf005"
                     }
                 }
