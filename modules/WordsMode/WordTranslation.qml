@@ -7,6 +7,7 @@
 import QtQuick 2.11
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.4
+import AppManager 1.0
 import "../Controls"
 
 Item {
@@ -39,10 +40,8 @@ Item {
                         lsv.pop()
                     else{
                         stView.pop()
-                        var str = "qrc:/modules/WordsMode/Finish.qml"
-                        var obj = createPage(str)
-                        obj.getResults(root.corrects, root.cards.length)
-                        stView.push(obj)
+                        app.setPage(AppManager.Finish)
+                        app.sendWordModeResults({"correctCards": root.corrects, "totalCards": root.cards.length})
                     }
                 }
                 Component.onCompleted: {

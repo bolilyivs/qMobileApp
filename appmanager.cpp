@@ -18,11 +18,12 @@ void AppManager::setPage(Pages page)
     mCurrentPage = page;
     qDebug() << page;
     switch (page) {
-        case Pages::WordTranslate: setPageUrl(WORD_TRANSLATION); break;
-        case Pages::Chapter1Menu: setPageUrl(CHAPTER_1_MENU); break;
-        case Pages::Chapter1SentenceCreator: setPageUrl(CHAPTER_1_SENTENCE_CREATOR); break;
-        case Pages::Chapter1SentenceTranslate: setPageUrl(CHAPTER_1_SENTENCE_TRANSALTE); break;
-        case Pages::Chapter1Rules: setPageUrl(CHAPTER_1_RULESCHAPTER1); break;
+    case Pages::WordTranslate: setPageUrl(WORD_TRANSLATION); break;
+    case Pages::Chapter1Menu: setPageUrl(CHAPTER_1_MENU); break;
+    case Pages::Chapter1SentenceCreator: setPageUrl(CHAPTER_1_SENTENCE_CREATOR); break;
+    case Pages::Chapter1SentenceTranslate: setPageUrl(CHAPTER_1_SENTENCE_TRANSALTE); break;
+    case Pages::Chapter1Rules: setPageUrl(CHAPTER_1_RULESCHAPTER1); break;
+    case Pages::Finish: setPageUrl(FINISH); break;
     }
     emit currentPageUrlChanged();
 }
@@ -72,12 +73,30 @@ QVariantList AppManager::shuffle(QVariantList list)
 //Send results
 void AppManager::sendWordModeResults(QVariantMap map)
 {
-
+    if(map.contains("time"))
+        mResTime = map["time"].toLongLong();
+    if(map.contains("correctCards"))
+        mResCorrectCards = map["correctCards"].toInt();
+    if(map.contains("totalCards"))
+        mResTotalCards = map["totalCards"].toInt();
+    emit resCorrectCardsChanged();
+    emit resTotalCardsChanged();
+    emit resTime();
 }
 
 void AppManager::sendGrammarModeResults(QVariantMap map)
 {
+    if(map.contains("time"))
+        mResTime = map["time"].toLongLong();
+    if(map.contains("correctCards"))
+        mResCorrectCards = map["correctCards"].toInt();
+    if(map.contains("totalCards"))
+        mResTotalCards = map["totalCards"].toInt();
+    emit resCorrectCardsChanged();
+    emit resTotalCardsChanged();
+    emit resTime();
 
+    qDebug() << mResTotalCards;
 }
 
 

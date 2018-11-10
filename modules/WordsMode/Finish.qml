@@ -7,12 +7,11 @@
 import QtQuick 2.11
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.4
+import AppManager 1.0
 import "../Controls"
 
 Item {
     id: root
-    property int corrects
-    property int countCards
 
     ColumnLayout{
         id: com
@@ -23,7 +22,7 @@ Item {
             height: dp(100)
             UiLabel{
                 anchors.fill: parent
-                text: "\uf274 Верно: " + corrects
+                text: "\uf274 Верно: " + app.resCorrectCards
                 color: "white"
                 font.pixelSize: dp(30)
                 anchors.margins: 20
@@ -37,7 +36,7 @@ Item {
             height: dp(100)
             UiLabel{
                 anchors.fill: parent
-                text: "\uf273 Ошибок: " + (countCards - corrects)
+                text: "\uf273 Ошибок: " + (app.resTotalCards - app.resCorrectCards)
                 color: "white"
                 font.pixelSize: dp(30)
                 anchors.margins: 20
@@ -51,7 +50,7 @@ Item {
             height: dp(100)
             UiLabel{
                 anchors.fill: parent
-                text: "\uf641 Всего слов: " + countCards
+                text: "\uf641 Всего слов: " + app.resTotalCards
                 color: "white"
                 font.pixelSize: dp(30)
                 anchors.margins: 20
@@ -67,7 +66,7 @@ Item {
             UiLabel{
                 anchors.fill: parent
                 text: {
-                    var res = corrects/countCards
+                    var res = app.resCorrectCards/app.resTotalCards
                     if(res > 0.9){
                         app.say("Perfect!")
                         return "Perfect\n\uf005\uf005\uf005\uf005\uf005"

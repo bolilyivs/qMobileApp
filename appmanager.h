@@ -13,12 +13,18 @@ class AppManager: public QObject
     Q_PROPERTY(qint8 userLevel READ userLevel NOTIFY userLevelChanged)
     Q_PROPERTY(qreal userExp READ userExp NOTIFY userExpChanged)
 
+
     Q_PROPERTY(QVariantList currentData READ currentData NOTIFY currentDataChanged)
     Q_PROPERTY(QString currentPageUrl WRITE setPageUrl READ currentPageUrl NOTIFY currentPageUrlChanged)
 
+    Q_PROPERTY(qint32 resTotalCards READ resTotalCards NOTIFY resTotalCardsChanged)
+    Q_PROPERTY(qint32 resCorrectCards READ resCorrectCards NOTIFY resCorrectCardsChanged)
+    Q_PROPERTY(qint64 resTime READ resTime NOTIFY resTimeChanged)
+
 public:
     enum Pages{WordTranslate,
-                Chapter1Menu,Chapter1SentenceCreator,Chapter1SentenceTranslate,Chapter1Rules
+               Chapter1Menu,Chapter1SentenceCreator,Chapter1SentenceTranslate,Chapter1Rules,
+               Finish
                };
 
     Q_ENUM(Pages)
@@ -41,6 +47,10 @@ private:
     //Modules
     QTextToSpeech *mSpeech;
 
+    //Current Results
+    qint32 mResTotalCards;
+    qint32 mResCorrectCards;
+    qint64 mResTime;
 
 public:
     AppManager();
@@ -55,6 +65,9 @@ public:
     qreal userExp();
     QVariantList currentData();
     QString currentPageUrl();
+    qint32 resTotalCards(){return mResTotalCards;}
+    qint32 resCorrectCards(){return mResCorrectCards;}
+    qint64 resTime(){return mResTime;}
 
 
     //Mothods
@@ -78,6 +91,9 @@ signals:
     void userExpChanged();
     void currentDataChanged();
     void currentPageUrlChanged();
+    void resTotalCardsChanged();
+    void resCorrectCardsChanged();
+    void resTimeChanged();
 
 };
 

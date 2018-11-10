@@ -1,6 +1,7 @@
 import QtQuick 2.11
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.4
+import AppManager 1.0
 
 Item {
     id: root
@@ -71,10 +72,10 @@ Item {
         timer.isNext = false
         if(index >= sentences.length){
             stView.pop()
-            var str = "qrc:/modules/WordsMode/Finish.qml"
-            var obj = createPage(str)
-            obj.getResults(root.corrects, sentences.length)
-            stView.push(obj)
+            stView.pop()
+            app.setPage(AppManager.Finish)
+            app.sendGrammarModeResults({"correctCards": root.corrects, "totalCards": root.sentences.length})
+
         }
         scu.sentence = getSentenceParts(sentences[index])
         scu.sentenceTranslate = translates[index]
