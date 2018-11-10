@@ -11,11 +11,7 @@
         <file>modules/Panels/HeaderPanel.qml</file>
         <file>modules/Panels/ChangeModePanel.qml</file>
         <file>modules/Pages/GrammarMode.qml</file>
-        <file>modules/WordsMode/WordTranslation.qml</file>
-        <file>modules/Controls/WordCard.qml</file>
-        <file>modules/Controls/WordTile.qml</file>
         <file>images/nopic.png</file>
-        <file>modules/WordsMode/WordTranslationUnit.qml</file>
         <file>modules/WordsMode/Finish.qml</file>
         <file>modules/Controls/CLabel.qml</file>
         <file>fonts/FreeSansBold.ttf</file>
@@ -40,5 +36,12 @@
         <file>modules/GrammarMode/Chapter1/RulesChapter1.qml</file>
         <file>modules/AppManager/AppManager.qml</file>
         <file>modules/AppManager/AppUtils.js</file>
+        <file>modules/WordsMode/TranslationWord.qml</file>
+        <file>modules/WordsMode/WordTranslation.qml</file>
+        <file>modules/WordsMode/Controls/Card4Tiles.qml</file>
+        <file>modules/WordsMode/Controls/Card4TilesUnit.qml</file>
+        <file>modules/WordsMode/Controls/WordTile.qml</file>
+        <file>modules/WordsMode/Controls/WordCard.qml</file>
+        <file>AppView.qml</file>
     </qresource>
 </RCC>

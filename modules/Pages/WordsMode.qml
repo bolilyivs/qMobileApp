@@ -40,7 +40,7 @@ Item {
                 model: [["Карточки", AppManager.WordTranslate],
                     ["Повторение", AppManager.WordTranslate],
                     ["Слово - перевод", AppManager.WordTranslate],
-                    ["Перевод - слово", AppManager.WordTranslate],
+                    ["Перевод - слово", AppManager.TranslateWord],
                     ["Построение слов", AppManager.WordTranslate],
                     ["Тренировка слуха", AppManager.WordTranslate]]
 

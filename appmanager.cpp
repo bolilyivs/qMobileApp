@@ -3,7 +3,7 @@
 AppManager::AppManager()
 {
     mSpeech = new QTextToSpeech();
-    mSpeech->setLocale(QLocale(QLocale::Language::Russian, QLocale::Country::RussianFederation));
+    mSpeech->setLocale(QLocale(QLocale::Language::English, QLocale::Country::UnitedStates));
     mUserId = "123";
     mUserName = "Guest";
     mUserLevel = 99;
@@ -19,6 +19,7 @@ void AppManager::setPage(Pages page)
     qDebug() << page;
     switch (page) {
     case Pages::WordTranslate: setPageUrl(WORD_TRANSLATION); break;
+    case Pages::TranslateWord: setPageUrl(TRANSLATION_WORD); break;
     case Pages::Chapter1Menu: setPageUrl(CHAPTER_1_MENU); break;
     case Pages::Chapter1SentenceCreator: setPageUrl(CHAPTER_1_SENTENCE_CREATOR); break;
     case Pages::Chapter1SentenceTranslate: setPageUrl(CHAPTER_1_SENTENCE_TRANSALTE); break;
@@ -64,9 +65,10 @@ QString AppManager::currentPageUrl()
 //Mothods
 QVariantList AppManager::shuffle(QVariantList list)
 {
-    QVariantList newList;
-
-    return newList;
+    qDebug() << list;
+    std::random_shuffle(list.begin(), list.end());
+    qDebug() << list;
+    return list;
 }
 
 
@@ -111,23 +113,33 @@ void AppManager::say(QString text)
 //Cards
 void AppManager::receiveWordCards()
 {
+    QString word = "word";
+    QString translation = "translation";
+
+    if(mCurrentPage == Pages::TranslateWord){
+        word = "translation";
+        translation = "word";
+    }
+
     mCurrentData.clear();
     QVariantMap map;
-    map["word"] = "Hello";
-    map["translation"] = "Привет";
+    map[word] = "Hello";
+    map[translation] = "Привет";
     mCurrentData << map;
-    map["word"] = "House";
-    map["translation"] = "Дом";
+    map[word] = "House";
+    map[translation] = "Дом";
     mCurrentData << map;
-    map["word"] = "Tree";
-    map["translation"] = "Дерево";
+    map[word] = "Tree";
+    map[translation] = "Дерево";
     mCurrentData << map;
-    map["word"] = "Sky";
-    map["translation"] = "Небо";
+    map[word] = "Sky";
+    map[translation] = "Небо";
     mCurrentData << map;
-    map["word"] = "Car";
-    map["translation"] = "Автомобиль";
+    map[word] = "Car";
+    map[translation] = "Автомобиль";
     mCurrentData << map;
+
+
 
     emit currentDataChanged();
 }

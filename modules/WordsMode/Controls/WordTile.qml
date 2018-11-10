@@ -6,6 +6,7 @@
 import QtQuick 2.11
 import QtQuick.Controls 2.4
 import QtGraphicalEffects 1.0
+import "../../Controls"
 
 Rectangle{
     id: root
@@ -43,7 +44,7 @@ Rectangle{
 
     states: [
         State {
-            name: "pas"
+            name: "normal"
             PropertyChanges {
                 target: root
                 color: "#CCFFFFFF"
@@ -64,4 +65,17 @@ Rectangle{
             }
         }
     ]
+
+    onStateChanged: {
+        timer.start()
+    }
+
+    Timer{
+        id: timer
+        interval: 500;
+        property bool isNext: false
+        onTriggered: {
+            root.state = "normal"
+        }
+    }
 }

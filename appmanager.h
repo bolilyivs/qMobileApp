@@ -22,7 +22,7 @@ class AppManager: public QObject
     Q_PROPERTY(qint64 resTime READ resTime NOTIFY resTimeChanged)
 
 public:
-    enum Pages{WordTranslate,
+    enum Pages{WordTranslate, TranslateWord,
                Chapter1Menu,Chapter1SentenceCreator,Chapter1SentenceTranslate,Chapter1Rules,
                Finish
                };

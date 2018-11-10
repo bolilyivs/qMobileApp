@@ -18,7 +18,7 @@ Item {
     property var translates
 
     onInDataChanged: {
-        var arr = shuffle(inData)
+        var arr = app.shuffle(inData)
         sentences = []
         translates = []
         for(var i=0; i<arr.length; i++){
@@ -71,8 +71,7 @@ Item {
         isCorrect = true
         timer.isNext = false
         if(index >= sentences.length){
-            stView.pop()
-            stView.pop()
+            stView.popDestroy()
             app.setPage(AppManager.Finish)
             app.sendGrammarModeResults({"correctCards": root.corrects, "totalCards": root.sentences.length})
 
@@ -100,17 +99,6 @@ Item {
                 nextSentence()
             scu.status = "normal"
         }
-    }
-
-    function shuffle(array){
-        var larray = array.slice()
-        var sharr = []
-        while(larray.length>0){
-            var i = Math.round(Math.random()*100) % larray.length
-            sharr.push(larray[i])
-            larray.splice(i, 1)
-        }
-        return sharr
     }
 }
 

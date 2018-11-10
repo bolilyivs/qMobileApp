@@ -32,11 +32,7 @@ Rectangle{
                     return ""
                 }
             }
-            onClicked: {
-                var obj = stView.pop()
-                if(stView.depth>1)
-                    obj.destroy(500)
-            }
+            onClicked: stView.popDestroy()
         }
 
         Rectangle{

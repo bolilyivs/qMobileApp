@@ -18,13 +18,14 @@ import "modules/Pages"
 
 
 ApplicationWindow {
+    id: win
     visible: true
     width: 600
     height: 1000
     title: qsTr("Three Word English")
-    id: win
     color: "darkred"
     property int dpi: Screen.pixelDensity * 25.4
+    property var appView
 
     Image{
         id: bg
@@ -37,48 +38,16 @@ ApplicationWindow {
         }
     }
 
-    ColumnLayout{
-        anchors.fill: parent
-
-        NavigationPanel{
-            Layout.fillWidth: true
-            Layout.margins: 10
-        }
-
-        StackView{
-            id: stView
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            initialItem: lg
-            ChangeModePanel{
-                id: cmp
-            }
-        }
-
+    Component.onCompleted: {
+        appView = createObject("qrc:/AppView.qml", win)
     }
 
-    Item{
-        id: pages
-        LoginPage{
-            id: lg
-            onEnterGuest:stView.push(cmp)
+    onClosing: {
+        close.accepted = false
+        if(appView.stack.depth < 1){
+            Qt.quit()
         }
-    }
 
-
-    AppManager{
-        id: app
-        onCurrentPageUrlChanged: {
-            stView.push(createObject(currentPageUrl, pages))
-        }
-    }
-
-    function dp(x){
-        if(dpi < 120) {
-            return x; // Для обычного монитора компьютера
-        } else {
-            return x*(dpi/160);
-        }
     }
 
     function createObject(psource, pparent){
@@ -87,18 +56,5 @@ ApplicationWindow {
             var object = component.createObject(pparent);
             return object
         }
-    }
-
-    function createPage(psource){
-        return createObject(psource, pages)
-    }
-
-    FontLoader {
-        id: localFont
-        source: "qrc:/fonts/Ubuntu-M.ttf"
-    }
-    FontLoader {
-        id: aweFont
-        source: "qrc:/fonts/fa-solid-900.ttf"
     }
 }
