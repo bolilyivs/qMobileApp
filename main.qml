@@ -25,7 +25,6 @@ ApplicationWindow {
     title: qsTr("Three Word English")
     color: "darkred"
     property int dpi: Screen.pixelDensity * 25.4
-    property var appView
 
     Image{
         id: bg
@@ -39,15 +38,12 @@ ApplicationWindow {
     }
 
     Component.onCompleted: {
-        appView = createObject("qrc:/AppView.qml", win)
+        createObject("qrc:/AppView.qml", win)
     }
 
     onClosing: {
-        close.accepted = false
-        if(appView.stack.depth < 1){
-            Qt.quit()
-        }
-
+        if(Qt.platform.os === "android")
+            close.accepted = false
     }
 
     function createObject(psource, pparent){

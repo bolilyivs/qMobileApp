@@ -8,12 +8,12 @@ import "modules/Pages"
 
 Item {
     anchors.fill: parent
-    property var stack: stView
 
     ColumnLayout{
         anchors.fill: parent
 
         NavigationPanel{
+            id: np
             Layout.fillWidth: true
             Layout.margins: 10
         }
@@ -23,14 +23,11 @@ Item {
             Layout.fillWidth: true
             Layout.fillHeight: true
             initialItem: lg
-            ChangeModePanel{
-                id: cmp
-            }
+
             function popDestroy(){
                 var obj = stView.pop()
                 if(stView.depth>1)
                     obj.destroy(500)
-
             }
         }
 
@@ -40,7 +37,7 @@ Item {
         id: pages
         LoginPage{
             id: lg
-            onEnterGuest:stView.push(cmp)
+            onEnter: app.setPage(AppManager.MainMenu)
         }
     }
 

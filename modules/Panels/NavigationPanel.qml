@@ -39,15 +39,16 @@ Rectangle{
             color: "transparent"
             Layout.fillHeight: true
             Layout.fillWidth: true
-            CLabel{
+            UiLabel{
                 anchors.fill: parent
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                text: app.userName
-                font.pixelSize: 20
+                text: "\uf007 " + app.userName + " | \uf161 " + app.userLevel + " | \uf217 " + app.userExp
+                font.pixelSize: 18
                 color: "#BB000000"
             }
         }
+
 
         MTButton{
             id: menuButton
@@ -78,7 +79,7 @@ Rectangle{
                 spacing: 1
                 width: menu.width
                 SlideMenuButton{
-                    text: "achivment"
+                    text: "achievement"
                     font.pixelSize: 25
                     Layout.fillWidth: true
                     implicitHeight: dp(100)

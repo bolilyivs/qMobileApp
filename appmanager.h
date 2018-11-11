@@ -10,7 +10,7 @@ class AppManager: public QObject
     Q_OBJECT
     Q_PROPERTY(QString userID READ userID NOTIFY userIDChanged)
     Q_PROPERTY(QString userName READ userName NOTIFY userNameChanged)
-    Q_PROPERTY(qint8 userLevel READ userLevel NOTIFY userLevelChanged)
+    Q_PROPERTY(qint32 userLevel READ userLevel NOTIFY userLevelChanged)
     Q_PROPERTY(qreal userExp READ userExp NOTIFY userExpChanged)
 
 
@@ -22,7 +22,8 @@ class AppManager: public QObject
     Q_PROPERTY(qint64 resTime READ resTime NOTIFY resTimeChanged)
 
 public:
-    enum Pages{WordTranslate, TranslateWord,
+    enum Pages{MainMenu,
+               WordTranslate, TranslateWord,
                Chapter1Menu,Chapter1SentenceCreator,Chapter1SentenceTranslate,Chapter1Rules,
                Finish
                };
@@ -33,7 +34,7 @@ private:
     //User Info
     QString mUserId;
     QString mUserName;
-    qint8 mUserLevel;
+    qint32 mUserLevel;
     qreal mUserExp;
 
     //Current data
@@ -46,6 +47,7 @@ private:
 
     //Modules
     QTextToSpeech *mSpeech;
+    bool voiceInit;
 
     //Current Results
     qint32 mResTotalCards;
@@ -61,7 +63,7 @@ public:
     //Get
     QString userID();
     QString userName();
-    qint8 userLevel();
+    qint32 userLevel();
     qreal userExp();
     QVariantList currentData();
     QString currentPageUrl();

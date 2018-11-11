@@ -3,12 +3,13 @@
 AppManager::AppManager()
 {
     mSpeech = new QTextToSpeech();
-    mSpeech->setLocale(QLocale(QLocale::Language::English, QLocale::Country::UnitedStates));
+
+
     mUserId = "123";
     mUserName = "Guest";
-    mUserLevel = 99;
+    mUserLevel = 5;
     mUserExp = 0.5;
-
+    voiceInit = false;
 }
 
 
@@ -18,6 +19,7 @@ void AppManager::setPage(Pages page)
     mCurrentPage = page;
     qDebug() << page;
     switch (page) {
+    case Pages::MainMenu: setPageUrl(MAIN_MENU); break;
     case Pages::WordTranslate: setPageUrl(WORD_TRANSLATION); break;
     case Pages::TranslateWord: setPageUrl(TRANSLATION_WORD); break;
     case Pages::Chapter1Menu: setPageUrl(CHAPTER_1_MENU); break;
@@ -40,7 +42,7 @@ QString AppManager::userName()
     return mUserName;
 }
 
-qint8 AppManager::userLevel()
+qint32 AppManager::userLevel()
 {
     return mUserLevel;
 }
@@ -105,6 +107,11 @@ void AppManager::sendGrammarModeResults(QVariantMap map)
 //Speech
 void AppManager::say(QString text)
 {
+    if(!voiceInit){
+        mSpeech->setLocale(QLocale(QLocale::Language::English, QLocale::Country::UnitedStates));
+        voiceInit = true;
+    }
+
     if(mSpeech->state() == QTextToSpeech::Ready)
         mSpeech->say(text);
 }

@@ -14,7 +14,7 @@ Rectangle {
     color: "#00000000"
 
     signal enter()
-    signal enterGuest()
+    signal register()
 
     ColumnLayout{
         anchors.fill: parent
@@ -62,6 +62,7 @@ Rectangle {
                     Layout.fillWidth: true
                     font.pixelSize: dp(30)
                     color: "#BB000000"
+                    text: "guest"
                 }
 
                 Rectangle{
@@ -83,6 +84,7 @@ Rectangle {
                     font.pixelSize: dp(30)
                     color: "#BB000000"
                     echoMode: TextInput.Password
+                    text: "guest"
                 }
 
             }
@@ -100,12 +102,12 @@ Rectangle {
             RowLayout{
                 anchors.fill: parent
                 Button{
-                    text: "\uf21b Гость"
+                    text: "\uf234 Регистрация"
                     font.family: aweFont.name
                     Layout.fillHeight: true
                     Layout.fillWidth: true
                     font.pixelSize: dp(20)
-                    onClicked: enterGuest()
+                    onClicked: register()
                 }
                 Button{
                     text: "\uf2f6 Войти"

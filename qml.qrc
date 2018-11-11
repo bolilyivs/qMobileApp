@@ -9,7 +9,7 @@
         <file>modules/Controls/MenuImageTile.qml</file>
         <file>modules/Controls/MTButton.qml</file>
         <file>modules/Panels/HeaderPanel.qml</file>
-        <file>modules/Panels/ChangeModePanel.qml</file>
+        <file>modules/Panels/ChangeModelPanel.qml</file>
         <file>modules/Pages/GrammarMode.qml</file>
         <file>images/nopic.png</file>
         <file>modules/WordsMode/Finish.qml</file>
@@ -34,7 +34,6 @@
         <file>modules/GrammarMode/Controls/SentencePart.qml</file>
         <file>modules/GrammarMode/Chapter1/SentenceTranslateChapter1.qml</file>
         <file>modules/GrammarMode/Chapter1/RulesChapter1.qml</file>
-        <file>modules/AppManager/AppManager.qml</file>
         <file>modules/AppManager/AppUtils.js</file>
         <file>modules/WordsMode/TranslationWord.qml</file>
         <file>modules/WordsMode/WordTranslation.qml</file>

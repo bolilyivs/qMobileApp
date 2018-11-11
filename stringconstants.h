@@ -1,6 +1,8 @@
 #ifndef STRINGCONSTANTS_H
 #define STRINGCONSTANTS_H
 
+#define MAIN_MENU "qrc:/modules/Panels/ChangeModelPanel.qml"
+
 #define WORD_TRANSLATION "qrc:/modules/WordsMode/WordTranslation.qml"
 #define TRANSLATION_WORD "qrc:/modules/WordsMode/TranslationWord.qml"
 
