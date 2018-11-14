@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QTextToSpeech>
 #include <stringconstants.h>
+    #include <QRandomGenerator>
 
 class AppManager: public QObject
 {

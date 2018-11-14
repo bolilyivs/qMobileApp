@@ -171,5 +171,51 @@ void AppManager::receiveSentenceCards()
     map["translation"] = "Он Джон";
     mCurrentData << map;
 
+    map["sentence"] = "I am not a_professional artist";
+    map["translation"] = "Я не профессиональный художник";
+    mCurrentData << map;
+
+    map["sentence"] = "I have lost my password";
+    map["translation"] = "Я потерял свой пароль";
+    mCurrentData << map;
+
+    map["sentence"] = "I do not smoke";
+    map["translation"] = " Я не курю";
+    mCurrentData << map;
+
+    map["sentence"] = "Are you can swim?";
+    map["translation"] = "Ты умеешь плавать?";
+    mCurrentData << map;
+
+    map["sentence"] = " Have you some idea?";
+    map["translation"] = "У тебя есть идея? ";
+    mCurrentData << map;
+
+    map["sentence"] = "Do you know the_way?";
+    map["translation"] = "Ты знаешь дорогу?";
+    mCurrentData << map;
+
+    map["sentence"] = "She is my sun";
+    map["translation"] = "Она моё солнце";
+    mCurrentData << map;
+
+    map["sentence"] = "He has got a_friend.";
+    map["translation"] = "У него есть друг";
+    mCurrentData << map;
+
+    map["sentence"] = "They are in the open sea";
+    map["translation"] = "Они в открытом море";
+    mCurrentData << map;
+
+    map["sentence"] = "They have hamburgers";
+    map["translation"] = "У них есть гамбургеры";
+    mCurrentData << map;
+
+
+    while(mCurrentData.size() > 10){
+            int x = QRandomGenerator::global()->generate() % mCurrentData.size();
+            mCurrentData.removeAt(x);
+    }
+
     emit currentDataChanged();
 }
