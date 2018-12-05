@@ -43,5 +43,7 @@
         <file>modules/WordsMode/Controls/WordCard.qml</file>
         <file>AppView.qml</file>
         <file>modules/WordsMode/WordReading.qml</file>
+        <file>modules/WordsMode/Controls/CardReadUnit.qml</file>
+        <file>modules/WordsMode/Controls/CardRead.qml</file>
     </qresource>
 </RCC>
