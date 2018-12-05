@@ -42,7 +42,8 @@ Item {
                     ["Слово - перевод", AppManager.WordTranslate],
                     ["Перевод - слово", AppManager.TranslateWord],
                     ["Построение слов", AppManager.WordTranslate],
-                    ["Тренировка слуха", AppManager.WordTranslate]]
+                    ["Тренировка слуха", AppManager.WordTranslate],
+                    ["Чтение", AppManager.WordReading]]
 
                 MenuTile{
                     text: modelData[0]
@@ -50,7 +51,9 @@ Item {
                     height: dp(150)
                     onClicked: app.setPage(modelData[1])
                     Component.onCompleted: {
-                        if(text == "Слово - перевод"){
+                        if(text == "Слово - перевод" ||
+                                text == "Перевод - слово" ||
+                                text == "Чтение" ){
                             bgColor = "#900a87ad"
                         }
                     }

@@ -2,6 +2,8 @@
 #define APPMANAGER_H
 
 #include <QObject>
+#include <QtNetwork>
+#include <QtMultimedia>
 #include <QTextToSpeech>
 #include <stringconstants.h>
     #include <QRandomGenerator>
@@ -22,9 +24,12 @@ class AppManager: public QObject
     Q_PROPERTY(qint32 resCorrectCards READ resCorrectCards NOTIFY resCorrectCardsChanged)
     Q_PROPERTY(qint64 resTime READ resTime NOTIFY resTimeChanged)
 
+    Q_PROPERTY(QString speechText READ speechText NOTIFY speechTextChanged)
+
+    QString path;
 public:
     enum Pages{MainMenu,
-               WordTranslate, TranslateWord,
+               WordTranslate, TranslateWord, WordReading,
                Chapter1Menu,Chapter1SentenceCreator,Chapter1SentenceTranslate,Chapter1Rules,
                Finish
                };
@@ -37,6 +42,7 @@ private:
     QString mUserName;
     qint32 mUserLevel;
     qreal mUserExp;
+    QBuffer buffer;
 
     //Current data
     QVariantList mCurrentData;
@@ -54,6 +60,14 @@ private:
     qint32 mResTotalCards;
     qint32 mResCorrectCards;
     qint64 mResTime;
+
+
+    //Network
+    QNetworkAccessManager *manager;
+    //Audio
+    QAudioInput *audio;
+
+    QString mSpeechText;
 
 public:
     AppManager();
@@ -87,6 +101,16 @@ public:
     Q_INVOKABLE void receiveWordCards();
     Q_INVOKABLE void receiveSentenceCards();
 
+    //Network
+    Q_INVOKABLE void sendSpeech();
+
+
+    //Speech
+    Q_INVOKABLE void startRecord();
+    Q_INVOKABLE void stopRecord();
+
+    QString speechText(){return mSpeechText;}
+
 signals:
     void userIDChanged();
     void userNameChanged();
@@ -97,6 +121,10 @@ signals:
     void resTotalCardsChanged();
     void resCorrectCardsChanged();
     void resTimeChanged();
+    void speechTextChanged();
+
+public slots:
+    void getSpeech(QNetworkReply *reply);
 
 };
 

@@ -42,5 +42,6 @@
         <file>modules/WordsMode/Controls/WordTile.qml</file>
         <file>modules/WordsMode/Controls/WordCard.qml</file>
         <file>AppView.qml</file>
+        <file>modules/WordsMode/WordReading.qml</file>
     </qresource>
 </RCC>

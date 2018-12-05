@@ -10,6 +10,24 @@ AppManager::AppManager()
     mUserLevel = 5;
     mUserExp = 0.5;
     voiceInit = false;
+
+    //Speech to text
+    manager = new QNetworkAccessManager(this);
+
+    QAudioFormat format;
+    format.setSampleRate(16000);
+    format.setChannelCount(1);
+    format.setSampleSize(16);
+    format.setCodec("audio/pcm");
+    format.setByteOrder(QAudioFormat::LittleEndian);
+    format.setSampleType(QAudioFormat::SignedInt);
+    QAudioDeviceInfo info(QAudioDeviceInfo::defaultOutputDevice());
+    if (!info.isFormatSupported(format)){
+        qDebug() << "\n\n\n**************NotSupport!*************\n\n";
+    }
+
+    audio = new QAudioInput(format, this);
+    connect(manager, &QNetworkAccessManager::finished, this, &AppManager::getSpeech);
 }
 
 
@@ -21,6 +39,7 @@ void AppManager::setPage(Pages page)
     switch (page) {
     case Pages::MainMenu: setPageUrl(MAIN_MENU); break;
     case Pages::WordTranslate: setPageUrl(WORD_TRANSLATION); break;
+    case Pages::WordReading: setPageUrl(WORD_READING); break;
     case Pages::TranslateWord: setPageUrl(TRANSLATION_WORD); break;
     case Pages::Chapter1Menu: setPageUrl(CHAPTER_1_MENU); break;
     case Pages::Chapter1SentenceCreator: setPageUrl(CHAPTER_1_SENTENCE_CREATOR); break;
@@ -213,9 +232,66 @@ void AppManager::receiveSentenceCards()
 
 
     while(mCurrentData.size() > 10){
-            int x = QRandomGenerator::global()->generate() % mCurrentData.size();
-            mCurrentData.removeAt(x);
+        int x = QRandomGenerator::global()->generate() % mCurrentData.size();
+        mCurrentData.removeAt(x);
     }
 
     emit currentDataChanged();
+}
+
+
+void AppManager::startRecord()
+{
+    buffer.open(QBuffer::WriteOnly | QBuffer::Truncate);
+    if(buffer.isOpen()){
+        audio->start(&buffer);
+        qDebug() << "record";
+    }
+}
+
+void AppManager::stopRecord()
+{
+    qDebug() << "test";
+    audio->stop();
+    buffer.close();
+    sendSpeech();
+}
+
+void AppManager::sendSpeech()
+{
+    buffer.open(QBuffer::ReadOnly);
+
+
+    QNetworkRequest request;
+    request.setUrl(QUrl("https://api.wit.ai/speech"));
+    request.setRawHeader("Authorization", "Bearer 5KRNILYTYJUXANWDARJ5PTCJYC7GBSF7");
+    request.setRawHeader("Content-Type","audio/raw;encoding=signed-integer;bits=16;rate=16000;endian=little");
+
+    qDebug() << "test";
+    QNetworkReply* reply = manager->post(request, &buffer);
+    qDebug() << reply;
+    qDebug() << "test2";
+
+
+    QEventLoop eLoop;
+    QObject::connect(manager, &QNetworkAccessManager::finished, &eLoop, &QEventLoop::quit);
+    eLoop.exec( QEventLoop::ExcludeUserInputEvents );
+}
+void AppManager::getSpeech(QNetworkReply *reply)
+{
+    buffer.close();
+
+    if(reply->error()){
+        qDebug() << "error";
+        qDebug() <<  reply->readAll();
+        return;
+    }
+
+    QByteArray data = reply->readAll();
+    QJsonDocument doc = QJsonDocument::fromJson(data);
+    QJsonObject object = doc.object();
+    QJsonValue val = object.value("_text");
+    mSpeechText = val.toString();
+    qDebug() << mSpeechText;
+    emit speechTextChanged();
 }

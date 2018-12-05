@@ -7,7 +7,9 @@ import "modules/Panels"
 import "modules/Pages"
 
 Item {
+    id: root
     anchors.fill: parent
+    property string speechText: "test"
 
     ColumnLayout{
         anchors.fill: parent
@@ -47,6 +49,7 @@ Item {
         onCurrentPageUrlChanged: {
             stView.push(createObject(currentPageUrl, pages))
         }
+        onSpeechTextChanged: root.speechText = speechText
     }
 
     FontLoader {

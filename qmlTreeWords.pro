@@ -1,4 +1,4 @@
-QT += quick texttospeech
+QT += quick texttospeech network multimedia
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -44,3 +44,9 @@ ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 HEADERS += \
     appmanager.h \
     stringconstants.h
+
+contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
+    ANDROID_EXTRA_LIBS = \
+        $$PWD/libs/armeabi-v7a/libcrypto.so \
+        $$PWD/libs/armeabi-v7a/libssl.so
+}
