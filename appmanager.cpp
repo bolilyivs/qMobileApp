@@ -40,12 +40,16 @@ void AppManager::setPage(Pages page)
     case Pages::MainMenu: setPageUrl(MAIN_MENU); break;
     case Pages::WordTranslate: setPageUrl(WORD_TRANSLATION); break;
     case Pages::WordReading: setPageUrl(WORD_READING); break;
+    case Pages::WordConstructor: setPageUrl(WORD_Constructor); break;
+    case Pages::WordSpeech: setPageUrl(WORD_SPEECH); break;
     case Pages::TranslateWord: setPageUrl(TRANSLATION_WORD); break;
     case Pages::Chapter1Menu: setPageUrl(CHAPTER_1_MENU); break;
     case Pages::Chapter1SentenceCreator: setPageUrl(CHAPTER_1_SENTENCE_CREATOR); break;
     case Pages::Chapter1SentenceTranslate: setPageUrl(CHAPTER_1_SENTENCE_TRANSALTE); break;
     case Pages::Chapter1Rules: setPageUrl(CHAPTER_1_RULESCHAPTER1); break;
     case Pages::Finish: setPageUrl(FINISH); break;
+
+
     }
     emit currentPageUrlChanged();
 }

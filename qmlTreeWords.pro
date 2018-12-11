@@ -1,4 +1,4 @@
-QT += quick texttospeech network multimedia
+QT += quick texttospeech network multimedia svg
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -40,6 +40,8 @@ DISTFILES += \
     modules/Panels/RulesChapter1.qml
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+
+
 
 HEADERS += \
     appmanager.h \

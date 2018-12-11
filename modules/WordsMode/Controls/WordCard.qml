@@ -1,11 +1,11 @@
+
+
 /*
 Словарная карта:
 *Изображение
 *Слово
 *Транскрипция
 */
-
-
 import QtQuick 2.11
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.4
@@ -19,34 +19,40 @@ Rectangle {
     property alias imgSource: img.source
     property int countCorrect: 0
     property int countCards: 0
+    property bool isVisibleText: true
+
+    onIsVisibleTextChanged: {
+        wordLbl.visible = isVisibleText
+        transcriptionLbl.visible = isVisibleText
+    }
 
     height: dp(250)
     width: parent.width
     color: "#CCFFFFFF"
 
-    ColumnLayout{
+    ColumnLayout {
         anchors.fill: parent
         anchors.margins: 10
         spacing: 0
-        Rectangle{
+        Rectangle {
             height: 30
             Layout.fillWidth: true
             color: "#000a87ad"
-            RowLayout{
+            RowLayout {
                 anchors.fill: parent
                 anchors.margins: dp(10)
-                Item{
+                Item {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                 }
 
-                CLabel{
+                CLabel {
                     text: countCorrect + " \uf274"
                     color: "darkgreen"
                     font.family: aweFont.name
                     font.pixelSize: dp(30)
                 }
-                UiLabel{
+                UiLabel {
                     text: countCards + " \uf641"
                     color: "#FFBBBB00"
                     font.family: aweFont.name
@@ -55,11 +61,11 @@ Rectangle {
             }
         }
 
-        RowLayout{
+        RowLayout {
             Layout.fillWidth: true
             Layout.fillHeight: true
 
-            Image{
+            Image {
                 id: img
                 Layout.fillHeight: true
                 sourceSize.height: dp(100)
@@ -68,12 +74,12 @@ Rectangle {
                 fillMode: Image.PreserveAspectFit
             }
 
-            ColumnLayout{
+            ColumnLayout {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 spacing: 0
 
-                CLabel{
+                CLabel {
                     id: wordLbl
                     Layout.fillWidth: true
                     verticalAlignment: Text.AlignVCenter
@@ -84,7 +90,7 @@ Rectangle {
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 }
 
-                CLabel{
+                CLabel {
                     id: transcriptionLbl
                     Layout.fillWidth: true
                     horizontalAlignment: Text.AlignHCenter
@@ -93,20 +99,14 @@ Rectangle {
                     height: dp(10)
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 }
-
             }
-
         }
-
     }
 
-
-
-    MouseArea{
+    MouseArea {
         anchors.fill: parent
         onClicked: {
-            speech.say(wordLbl.text)
+            app.say(wordLbl.text)
         }
     }
-
 }

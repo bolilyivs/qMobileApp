@@ -45,5 +45,24 @@
         <file>modules/WordsMode/WordReading.qml</file>
         <file>modules/WordsMode/Controls/CardReadUnit.qml</file>
         <file>modules/WordsMode/Controls/CardRead.qml</file>
+        <file>Background.qml</file>
+        <file>images/bottom.svg</file>
+        <file>images/star.svg</file>
+        <file>images/top.svg</file>
+        <file>modules/Pages/HomePage.qml</file>
+        <file>modules/Panels/MenuNavigation.qml</file>
+        <file>modules/Controls/MenuNavButton.qml</file>
+        <file>modules/Controls/UserTile.qml</file>
+        <file>modules/WordsMode/WordConstructor.qml</file>
+        <file>modules/WordsMode/Controls/ConstructorUnit.qml</file>
+        <file>modules/WordsMode/Controls/ConstructorPlace.qml</file>
+        <file>modules/WordsMode/Controls/ConstructorParts.qml</file>
+        <file>modules/WordsMode/Controls/ConstructorPart.qml</file>
+        <file>modules/WordsMode/Controls/ControlPanel.qml</file>
+        <file>modules/WordsMode/Controls/Constructor.qml</file>
+        <file>modules/WordsMode/WordSpeech.qml</file>
+        <file>modules/WordsMode/Controls/CardSpeech.qml</file>
+        <file>modules/WordsMode/Controls/CardSpeechUnit.qml</file>
+        <file>modules/Controls/EditPlace.qml</file>
     </qresource>
 </RCC>

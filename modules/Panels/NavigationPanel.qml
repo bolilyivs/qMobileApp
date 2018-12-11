@@ -1,91 +1,89 @@
+
+
 /*
 Панель навигации
 
 */
-
 import QtQuick 2.11
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.4
 import QtGraphicalEffects 1.0
 import "../Controls"
 
-
-Rectangle{
+Image {
     id: root
-    height: dp(70)
-    radius: 10
-    color: "#CCFFFFFF"
+    height: dp(80)
+    source: "qrc:/images/top.svg"
+    sourceSize.height: height
 
-    RowLayout{
+    RowLayout {
         anchors.fill: parent
-        anchors.margins: 10
-
-        MTButton{
+        anchors.bottomMargin: 20
+        MTButton {
             text: {
-                if(stView>1)
+                if (stView > 1)
                     visible = true
-                if(stView.depth>2)
+                if (stView.depth > 2)
                     return "\uf060"
-                else if(stView.depth>1)
+                else if (stView.depth > 1)
                     return "\uf2f5"
-                else{
+                else {
                     return ""
                 }
             }
             onClicked: stView.popDestroy()
         }
 
-        Rectangle{
+        Rectangle {
             color: "transparent"
             Layout.fillHeight: true
             Layout.fillWidth: true
-            UiLabel{
+            UiLabel {
                 anchors.fill: parent
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                text: "\uf007 " + app.userName + " | \uf161 " + app.userLevel + " | \uf217 " + app.userExp
+                text: "\uf007 " + app.userName + " | \uf161 " + app.userLevel
+                      + " | \uf217 " + app.userExp
                 font.pixelSize: 18
-                color: "#BB000000"
+                color: "#BBFFFFFF"
             }
         }
 
-
-        MTButton{
+        MTButton {
             id: menuButton
             text: "\uf085"
             onClicked: menu.open()
         }
     }
 
-    Drawer{
+    Drawer {
         id: menu
         width: 0.5 * win.width
         height: win.height
         edge: Qt.RightEdge
 
-
-        Image{
+        Image {
             id: bgSlide
             anchors.fill: parent
             source: "qrc:/images/bg3.png"
             fillMode: Image.PreserveAspectCrop
             opacity: 0.5
         }
-        Flickable{
+        Flickable {
             anchors.fill: parent
             contentHeight: dcl.childrenRect.height
-            ColumnLayout{
+            ColumnLayout {
                 id: dcl
                 spacing: 1
                 width: menu.width
-                SlideMenuButton{
+                SlideMenuButton {
                     text: "achievement"
                     font.pixelSize: 25
                     Layout.fillWidth: true
                     implicitHeight: dp(100)
                 }
 
-                Image{
+                Image {
                     id: img1
                     z: 5
                     fillMode: Image.Stretch
@@ -96,7 +94,7 @@ Rectangle{
                     Layout.margins: 10
                     height: 200
                     source: "qrc:/images/bg.png"
-                    MouseArea{
+                    MouseArea {
                         anchors.fill: parent
                         onClicked: {
                             bg.source = parent.source
@@ -104,7 +102,7 @@ Rectangle{
                     }
                 }
 
-                Image{
+                Image {
                     id: img2
                     z: 5
                     fillMode: Image.Stretch
@@ -115,7 +113,7 @@ Rectangle{
                     Layout.margins: 10
                     height: 200
                     source: "qrc:/images/bg2.png"
-                    MouseArea{
+                    MouseArea {
                         anchors.fill: parent
                         onClicked: {
                             bg.source = parent.source
@@ -123,7 +121,7 @@ Rectangle{
                     }
                 }
 
-                Image{
+                Image {
                     id: img3
                     z: 5
                     fillMode: Image.Stretch
@@ -134,7 +132,7 @@ Rectangle{
                     Layout.margins: 10
                     height: 200
                     source: "qrc:/images/bg3.png"
-                    MouseArea{
+                    MouseArea {
                         anchors.fill: parent
                         onClicked: {
                             bg.source = parent.source
@@ -142,7 +140,7 @@ Rectangle{
                     }
                 }
 
-                SlideMenuButton{
+                SlideMenuButton {
                     text: "exit"
                     font.pixelSize: 25
                     Layout.fillWidth: true
@@ -151,7 +149,5 @@ Rectangle{
                 }
             }
         }
-
-
     }
 }

@@ -6,6 +6,8 @@
 #define WORD_TRANSLATION "qrc:/modules/WordsMode/WordTranslation.qml"
 #define TRANSLATION_WORD "qrc:/modules/WordsMode/TranslationWord.qml"
 #define WORD_READING "qrc:/modules/WordsMode/WordReading.qml"
+#define WORD_Constructor "qrc:/modules/WordsMode/WordConstructor.qml"
+#define WORD_SPEECH "qrc:/modules/WordsMode/WordSpeech.qml"
 
 #define CHAPTER_1_MENU "qrc:/modules/GrammarMode/Chapter1/Chapter1Menu.qml"
 #define CHAPTER_1_SENTENCE_CREATOR "qrc:/modules/GrammarMode/Chapter1/SentenceCreatorChapter1.qml"

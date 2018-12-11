@@ -1,8 +1,9 @@
+
+
 /*
 Страница ввода
 
 */
-
 import QtQuick 2.11
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.4
@@ -13,18 +14,18 @@ import "../Panels"
 Rectangle {
     color: "#00000000"
 
-    signal enter()
-    signal register()
+    signal enter
+    signal register
 
-    ColumnLayout{
+    ColumnLayout {
         anchors.fill: parent
         anchors.margins: 5
 
-        Rectangle{
+        Rectangle {
             Layout.fillWidth: true
             Layout.preferredHeight: 180
             color: "#00000000"
-            CLabel{
+            CLabel {
                 anchors.fill: parent
                 text: "Three Word\nEnglish"
                 font.pixelSize: dp(70)
@@ -34,21 +35,21 @@ Rectangle {
             }
         }
 
-        Rectangle{
+        Rectangle {
             Layout.preferredHeight: 300
             Layout.fillWidth: true
             radius: 6
             color: "#CCFFFFFF"
-            GridLayout{
+            GridLayout {
                 anchors.fill: parent
                 anchors.margins: 20
                 columns: 2
                 columnSpacing: 5
-                Rectangle{
+                Rectangle {
                     color: "#00000000"
                     width: 100
                     Layout.fillHeight: true
-                    UiLabel{
+                    UiLabel {
                         anchors.fill: parent
                         text: "\uf508"
                         color: "#BB000000"
@@ -57,7 +58,7 @@ Rectangle {
                     }
                 }
 
-                TextField{
+                TextField {
                     id: login
                     Layout.fillWidth: true
                     font.pixelSize: dp(30)
@@ -65,11 +66,11 @@ Rectangle {
                     text: "guest"
                 }
 
-                Rectangle{
+                Rectangle {
                     color: "#00000000"
                     width: 100
                     Layout.fillHeight: true
-                    UiLabel{
+                    UiLabel {
                         anchors.fill: parent
                         text: "\uf084"
                         font.pixelSize: dp(30)
@@ -78,7 +79,7 @@ Rectangle {
                     }
                 }
 
-                TextField{
+                TextField {
                     id: passwd
                     Layout.fillWidth: true
                     font.pixelSize: dp(30)
@@ -86,36 +87,49 @@ Rectangle {
                     echoMode: TextInput.Password
                     text: "guest"
                 }
-
             }
         }
 
-        Item{
+        Item {
             Layout.fillWidth: true
             Layout.fillHeight: true
         }
 
-        Rectangle{
+        Rectangle {
             height: 80
             Layout.fillWidth: true
             color: "#00000000"
-            RowLayout{
+            RowLayout {
                 anchors.fill: parent
-                Button{
+                Button {
                     text: "\uf234 Регистрация"
                     font.family: aweFont.name
                     Layout.fillHeight: true
                     Layout.fillWidth: true
                     font.pixelSize: dp(20)
                     onClicked: register()
+                    background: Rectangle {
+                        id: reg
+                        radius: 20
+                        color: "transparent"
+                        border.color: "#BB000000"
+                        border.width: 2
+                    }
                 }
-                Button{
+                Button {
                     text: "\uf2f6 Войти"
                     font.family: aweFont.name
                     Layout.fillHeight: true
                     Layout.fillWidth: true
                     font.pixelSize: dp(20)
                     onClicked: enter()
+                    background: Rectangle {
+                        id: ent
+                        radius: 20
+                        color: "transparent"
+                        border.color: "#BB000000"
+                        border.width: 2
+                    }
                 }
             }
         }

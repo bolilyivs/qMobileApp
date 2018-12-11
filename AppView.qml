@@ -11,40 +11,38 @@ Item {
     anchors.fill: parent
     property string speechText: "test"
 
-    ColumnLayout{
+    ColumnLayout {
         anchors.fill: parent
 
-        NavigationPanel{
+        NavigationPanel {
             id: np
             Layout.fillWidth: true
-            Layout.margins: 10
+            z: 5
         }
 
-        StackView{
+        StackView {
             id: stView
             Layout.fillWidth: true
             Layout.fillHeight: true
             initialItem: lg
 
-            function popDestroy(){
+            function popDestroy() {
                 var obj = stView.pop()
-                if(stView.depth>1)
+                if (stView.depth > 1)
                     obj.destroy(500)
             }
         }
-
     }
 
-    Item{
+    Item {
         id: pages
-        LoginPage{
+        LoginPage {
             id: lg
             onEnter: app.setPage(AppManager.MainMenu)
         }
     }
 
-
-    AppManager{
+    AppManager {
         id: app
         onCurrentPageUrlChanged: {
             stView.push(createObject(currentPageUrl, pages))
@@ -63,29 +61,29 @@ Item {
 
     focus: true
     Keys.onReleased: {
-        if(stView.depth > 1){
+        if (stView.depth > 1) {
 
             stView.popDestroy()
         }
     }
 
-    function dp(x){
-        if(dpi < 120) {
-            return x; // Для обычного монитора компьютера
+    function dp(x) {
+        if (dpi < 120) {
+            return x // Для обычного монитора компьютера
         } else {
-            return x*(dpi/160);
+            return x * (dpi / 160)
         }
     }
 
-    function createObject(psource, pparent){
-        var component = Qt.createComponent(psource);
-        if(component.status === Component.Ready){
-            var object = component.createObject(pparent);
+    function createObject(psource, pparent) {
+        var component = Qt.createComponent(psource)
+        if (component.status === Component.Ready) {
+            var object = component.createObject(pparent)
             return object
         }
     }
 
-    function createPage(psource){
+    function createPage(psource) {
         return createObject(psource, pages)
     }
 }

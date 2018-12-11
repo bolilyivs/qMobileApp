@@ -29,7 +29,7 @@ class AppManager: public QObject
     QString path;
 public:
     enum Pages{MainMenu,
-               WordTranslate, TranslateWord, WordReading,
+               WordTranslate, TranslateWord, WordReading, WordConstructor, WordSpeech,
                Chapter1Menu,Chapter1SentenceCreator,Chapter1SentenceTranslate,Chapter1Rules,
                Finish
                };
