@@ -12,7 +12,7 @@ Item {
     property int countCards
     property int currentCard
 
-    signal next(var text)
+    signal next
 
     ColumnLayout {
         anchors.fill: parent
@@ -25,18 +25,16 @@ Item {
             countCards: root.countCards
             word: card["word"]
             transcription: app.speechText
-            isVisibleText: false
         }
 
-        EditPlace {
-            id: ep
+        Item {
             Layout.fillWidth: true
             Layout.fillHeight: true
         }
 
         ControlPanel {
             Layout.fillWidth: true
-            onClicked: next(ep.text)
+            onClicked: next()
         }
     }
 }

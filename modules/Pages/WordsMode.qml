@@ -19,9 +19,10 @@ Item {
         spacing: dp(15)
 
         MenuTile {
-            text: "Комплекс"
+            text: "Обзор"
             Layout.fillWidth: true
             height: dp(200)
+            onClicked: app.setPage(AppManager.WordView)
         }
 
         GridLayout {
@@ -33,20 +34,13 @@ Item {
             columns: 2
 
             Repeater {
-                model: [["Обзор", AppManager.WordTranslate], ["Повторение", AppManager.WordTranslate], ["Слово - перевод", AppManager.WordTranslate], ["Перевод - слово", AppManager.TranslateWord], ["Конструктор слов", AppManager.WordConstructor], ["Понимание речи", AppManager.WordSpeech], ["Чтение", AppManager.WordReading]]
+                model: [["Повторение", AppManager.WordRepeating], ["Слово - перевод", AppManager.WordTranslate], ["Перевод - слово", AppManager.TranslateWord], ["Конструктор слов", AppManager.WordConstructor], ["Понимание речи", AppManager.WordSpeech], ["Чтение", AppManager.WordReading]]
 
                 MenuTile {
                     text: modelData[0]
                     Layout.fillWidth: true
                     height: dp(150)
                     onClicked: app.setPage(modelData[1])
-                    Component.onCompleted: {
-                        if (text == "Слово - перевод"
-                                || text == "Перевод - слово"
-                                || text == "Чтение") {
-                            bgColor = "#900a87ad"
-                        }
-                    }
                 }
             }
         }

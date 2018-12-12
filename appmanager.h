@@ -30,6 +30,7 @@ class AppManager: public QObject
 public:
     enum Pages{MainMenu,
                WordTranslate, TranslateWord, WordReading, WordConstructor, WordSpeech,
+               WordRepeating, WordView,
                Chapter1Menu,Chapter1SentenceCreator,Chapter1SentenceTranslate,Chapter1Rules,
                Finish
                };

@@ -42,6 +42,8 @@ void AppManager::setPage(Pages page)
     case Pages::WordReading: setPageUrl(WORD_READING); break;
     case Pages::WordConstructor: setPageUrl(WORD_Constructor); break;
     case Pages::WordSpeech: setPageUrl(WORD_SPEECH); break;
+    case Pages::WordRepeating: setPageUrl(WORD_REPEATING); break;
+    case Pages::WordView: setPageUrl(WORD_VIEW); break;
     case Pages::TranslateWord: setPageUrl(TRANSLATION_WORD); break;
     case Pages::Chapter1Menu: setPageUrl(CHAPTER_1_MENU); break;
     case Pages::Chapter1SentenceCreator: setPageUrl(CHAPTER_1_SENTENCE_CREATOR); break;

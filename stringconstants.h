@@ -8,6 +8,9 @@
 #define WORD_READING "qrc:/modules/WordsMode/WordReading.qml"
 #define WORD_Constructor "qrc:/modules/WordsMode/WordConstructor.qml"
 #define WORD_SPEECH "qrc:/modules/WordsMode/WordSpeech.qml"
+#define WORD_REPEATING "qrc:/modules/WordsMode/WordRepeating.qml"
+#define WORD_VIEW "qrc:/modules/WordsMode/WordView.qml"
+
 
 #define CHAPTER_1_MENU "qrc:/modules/GrammarMode/Chapter1/Chapter1Menu.qml"
 #define CHAPTER_1_SENTENCE_CREATOR "qrc:/modules/GrammarMode/Chapter1/SentenceCreatorChapter1.qml"

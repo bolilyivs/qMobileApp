@@ -19,8 +19,27 @@ Item {
     Button {
         anchors.bottom: panel.bottom
         anchors.horizontalCenter: panel.horizontalCenter
+        width: parent.width
         anchors.bottomMargin: 20
         text: "Next"
         onClicked: root.clicked()
+        background: Rectangle {
+            implicitWidth: 100
+            implicitHeight: 40
+            opacity: enabled ? 1 : 0.3
+            color: "transparent"
+            border.color: parent.down ? "#BB000000" : "#BBFFFFFF"
+            border.width: 2
+            radius: 20
+        }
+        contentItem: Text {
+            text: parent.text
+            font: parent.font
+            opacity: enabled ? 1.0 : 0.3
+            color: parent.down ? "#BB000000" : "#BBFFFFFF"
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            elide: Text.ElideRight
+        }
     }
 }

@@ -29,12 +29,12 @@ Item {
                     id: hp
                 }
 
-                WordsMode {
-                    id: wm
-                }
-
                 GrammarMode {
                     id: wm2
+                }
+
+                WordsMode {
+                    id: wm
                 }
 
                 GameModePage {

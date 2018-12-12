@@ -64,5 +64,11 @@
         <file>modules/WordsMode/Controls/CardSpeech.qml</file>
         <file>modules/WordsMode/Controls/CardSpeechUnit.qml</file>
         <file>modules/Controls/EditPlace.qml</file>
+        <file>modules/WordsMode/WordRepeating.qml</file>
+        <file>modules/WordsMode/WordView.qml</file>
+        <file>modules/WordsMode/Controls/Card2Tiles.qml</file>
+        <file>modules/WordsMode/Controls/Card2TilesUnit.qml</file>
+        <file>modules/WordsMode/Controls/CardView.qml</file>
+        <file>modules/WordsMode/Controls/CardViewUnit.qml</file>
     </qresource>
 </RCC>

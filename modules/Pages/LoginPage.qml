@@ -96,11 +96,18 @@ Rectangle {
         }
 
         Rectangle {
-            height: 80
+            height: 100
             Layout.fillWidth: true
             color: "#00000000"
+            Image {
+                id: name
+                source: "qrc:/images/bottom.svg"
+                anchors.fill: parent
+            }
+
             RowLayout {
                 anchors.fill: parent
+                anchors.topMargin: 30
                 Button {
                     text: "\uf234 Регистрация"
                     font.family: aweFont.name
@@ -109,11 +116,23 @@ Rectangle {
                     font.pixelSize: dp(20)
                     onClicked: register()
                     background: Rectangle {
-                        id: reg
-                        radius: 20
+                        implicitWidth: 100
+                        implicitHeight: 40
+                        opacity: enabled ? 1 : 0.3
                         color: "transparent"
-                        border.color: "#BB000000"
+                        border.color: parent.down ? "#BB000000" : "#BBFFFFFF"
                         border.width: 2
+                        radius: 20
+                    }
+
+                    contentItem: Text {
+                        text: parent.text
+                        font: parent.font
+                        opacity: enabled ? 1.0 : 0.3
+                        color: parent.down ? "#BB000000" : "#BBFFFFFF"
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        elide: Text.ElideRight
                     }
                 }
                 Button {
@@ -124,11 +143,22 @@ Rectangle {
                     font.pixelSize: dp(20)
                     onClicked: enter()
                     background: Rectangle {
-                        id: ent
-                        radius: 20
+                        implicitWidth: 100
+                        implicitHeight: 40
+                        opacity: enabled ? 1 : 0.3
                         color: "transparent"
-                        border.color: "#BB000000"
+                        border.color: parent.down ? "#BB000000" : "#BBFFFFFF"
                         border.width: 2
+                        radius: 20
+                    }
+                    contentItem: Text {
+                        text: parent.text
+                        font: parent.font
+                        opacity: enabled ? 1.0 : 0.3
+                        color: parent.down ? "#BB000000" : "#BBFFFFFF"
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        elide: Text.ElideRight
                     }
                 }
             }
