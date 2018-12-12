@@ -10,6 +10,7 @@ Rectangle {
 
     signal clicked(var part)
 
+    radius: height / 2
     color: "#BBFFFFFF"
     height: 50
     width: 50

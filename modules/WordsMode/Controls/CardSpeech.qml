@@ -25,7 +25,7 @@ Item {
 
     function checkWord(text) {
         console.log(text, curCard.card["word"])
-        if (text.toLowerCase() === curCard.card["word"].toLowerCase()) {
+        if (text.toLowerCase().trim() === curCard.card["word"].toLowerCase()) {
             index++
             corrects++
             nextCard()

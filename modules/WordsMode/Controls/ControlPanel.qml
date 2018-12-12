@@ -20,17 +20,12 @@ Item {
         anchors.bottom: panel.bottom
         anchors.horizontalCenter: panel.horizontalCenter
         width: parent.width
+        font.pixelSize: 30
         anchors.bottomMargin: 20
         text: "Next"
         onClicked: root.clicked()
         background: Rectangle {
-            implicitWidth: 100
-            implicitHeight: 40
-            opacity: enabled ? 1 : 0.3
             color: "transparent"
-            border.color: parent.down ? "#BB000000" : "#BBFFFFFF"
-            border.width: 2
-            radius: 20
         }
         contentItem: Text {
             text: parent.text

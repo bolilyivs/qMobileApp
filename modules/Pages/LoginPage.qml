@@ -19,7 +19,6 @@ Rectangle {
 
     ColumnLayout {
         anchors.fill: parent
-        anchors.margins: 5
 
         Rectangle {
             Layout.fillWidth: true
@@ -96,7 +95,7 @@ Rectangle {
         }
 
         Rectangle {
-            height: 100
+            height: 150
             Layout.fillWidth: true
             color: "#00000000"
             Image {
@@ -109,47 +108,14 @@ Rectangle {
                 anchors.fill: parent
                 anchors.topMargin: 30
                 Button {
-                    text: "\uf234 Регистрация"
-                    font.family: aweFont.name
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                    font.pixelSize: dp(20)
-                    onClicked: register()
-                    background: Rectangle {
-                        implicitWidth: 100
-                        implicitHeight: 40
-                        opacity: enabled ? 1 : 0.3
-                        color: "transparent"
-                        border.color: parent.down ? "#BB000000" : "#BBFFFFFF"
-                        border.width: 2
-                        radius: 20
-                    }
-
-                    contentItem: Text {
-                        text: parent.text
-                        font: parent.font
-                        opacity: enabled ? 1.0 : 0.3
-                        color: parent.down ? "#BB000000" : "#BBFFFFFF"
-                        horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
-                        elide: Text.ElideRight
-                    }
-                }
-                Button {
                     text: "\uf2f6 Войти"
                     font.family: aweFont.name
                     Layout.fillHeight: true
                     Layout.fillWidth: true
-                    font.pixelSize: dp(20)
+                    font.pixelSize: dp(30)
                     onClicked: enter()
                     background: Rectangle {
-                        implicitWidth: 100
-                        implicitHeight: 40
-                        opacity: enabled ? 1 : 0.3
                         color: "transparent"
-                        border.color: parent.down ? "#BB000000" : "#BBFFFFFF"
-                        border.width: 2
-                        radius: 20
                     }
                     contentItem: Text {
                         text: parent.text
