@@ -39,6 +39,7 @@ Item {
         LoginPage {
             id: lg
             onEnter: app.setPage(AppManager.MainMenu)
+            onRegister: app.setPage(AppManager.Registration)
         }    
     }
 

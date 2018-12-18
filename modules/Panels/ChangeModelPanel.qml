@@ -37,9 +37,9 @@ Item {
                     id: wm
                 }
 
-                GameModePage {
-                    id: wm3
-                }
+//                GameModePage {
+//                    id: wm3
+//                }
             }
         }
 
