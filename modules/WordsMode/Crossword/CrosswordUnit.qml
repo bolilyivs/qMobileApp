@@ -37,14 +37,27 @@ Item {
             Layout.fillWidth: true
             Layout.leftMargin: root.width/2 - childrenRect.width/2
         }
-        Label{
-            id: ta
-            Layout.fillHeight: true
+        RowLayout{
+            Layout.preferredHeight: childrenRect.height
             Layout.fillWidth: true
-            color: "white"
-            font.pixelSize: 20
-            Layout.leftMargin: 30
+            Label{
+                id: taAcross
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                color: "white"
+                font.pixelSize: 20
+                Layout.leftMargin: 30
+            }
+            Label{
+                id: taDown
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                color: "white"
+                font.pixelSize: 20
+            }
         }
+
+
         ControlPanel {
             Layout.fillWidth: true
             onClicked: {
@@ -84,13 +97,13 @@ Item {
                 }
                 gr.columns = columns
 
-                ta.text = "По горизонтали:\n"
+                taAcross.text = "По горизонтали:\n"
                 for(var i in across){
-                    ta.text += across[i] + "\n"
+                    taAcross.text += across[i] + "\n"
                 }
-                ta.text += "\nПо вертикали:\n"
+                taDown.text = "\nПо вертикали:\n"
                 for(i in down){
-                    ta.text += down[i] + "\n"
+                    taDown.text += down[i] + "\n"
                 }
             }
         }

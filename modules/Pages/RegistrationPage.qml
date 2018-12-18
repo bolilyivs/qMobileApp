@@ -21,20 +21,6 @@ Rectangle {
         anchors.fill: parent
 
         Rectangle {
-            Layout.fillWidth: true
-            Layout.preferredHeight: 180
-            color: "#00000000"
-            CLabel {
-                anchors.fill: parent
-                text: "Регистрация"
-                font.pixelSize: dp(70)
-                font.weight: Font.Bold
-                verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignHCenter
-            }
-        }
-
-        Rectangle {
             Layout.preferredHeight: 400
             Layout.fillWidth: true
             radius: 6

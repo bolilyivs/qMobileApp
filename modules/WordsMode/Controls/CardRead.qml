@@ -36,7 +36,7 @@ Item {
 
 
     function initCard(){
-        app.receiveWordCards()
+        app.receiveUserWords()
         cards = app.currentData
         curCard.card = root.cards[root.index]
     }
