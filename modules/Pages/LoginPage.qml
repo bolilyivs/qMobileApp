@@ -75,6 +75,7 @@ Rectangle {
                     color: "#BB000000"
                     echoMode: TextInput.Password
                     placeholderText: "Password"
+
                 }
 
                 Item{

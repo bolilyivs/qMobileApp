@@ -5,7 +5,7 @@
 
 #define REGISTRATION "qrc:/modules/Pages/RegistrationPage.qml"
 #define WORDSVIEWPAGE "qrc:/modules/Pages/WordsViewPage.qml"
-#define USERWORDSPAGE "Pages/UserWordsPage.qml"
+#define USERWORDSPAGE "qrc:/modules/Pages/UserWordsPage.qml"
 
 #define WORD_TRANSLATION "qrc:/modules/WordsMode/WordTranslation.qml"
 #define TRANSLATION_WORD "qrc:/modules/WordsMode/TranslationWord.qml"

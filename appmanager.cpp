@@ -155,8 +155,7 @@ void AppManager::say(QString text)
         mSpeech->say(text);
 }
 
-
-void AppManager::receiveWordCards()
+void AppManager::queryToReceive(QString query, DBController &db)
 {
     QString word = "word";
     QString translation = "translation";
@@ -167,19 +166,58 @@ void AppManager::receiveWordCards()
     }
 
     mCurrentData.clear();
-    QString query = "SELECT * FROM word";
-    mWordsDB.doQuery(query);
 
-    for(QMap<QString, QString> fmap: mWordsDB.getMapResults()){
+    db.doQuery(query);
+
+    for(QMap<QString, QString> fmap: db.getMapResults()){
         qDebug() << fmap;
         QVariantMap map;
         map[word] = fmap["word"];
         map[translation] = fmap["translation"];
+        map["id"] = fmap["id"];
         mCurrentData << map;
     }
 
     emit currentDataChanged();
 }
+
+void AppManager::receiveWordCards()
+{
+    QString query = "SELECT * FROM word";
+    queryToReceive(query, mWordsDB);
+}
+
+void AppManager::receiveSomethingWords()
+{
+    QString query = "SELECT * FROM word ORDER BY RANDOM() LIMIT 30";
+    queryToReceive(query, mWordsDB);
+}
+void AppManager::receiveSearchWords()
+{
+
+}
+void AppManager::receiveUserWords()
+{
+    QString query = "SELECT id FROM data ORDER BY RANDOM() LIMIT 30";
+    mUserDB.doQuery(query);
+    query = "SELECT * FROM word WHERE id IN ( ";
+    for(QMap<QString, QString> fmap: mUserDB.getMapResults()){
+        QVariantMap map;
+        query += fmap["id"] + ",";
+    }
+
+   query[query.size()-1] = ')';
+   qDebug() << query;
+   queryToReceive(query, mWordsDB);
+}
+
+void AppManager::addToUserWord(QString id)
+{
+    QString query = "INSERT INTO data (word_id) values (" +id + ")";
+    qDebug() << query;
+    mUserDB.doQuery(query);
+}
+
 
 void AppManager::receiveSentenceCards()
 {
@@ -249,6 +287,8 @@ void AppManager::receiveSentenceCards()
 
     emit currentDataChanged();
 }
+
+
 
 
 void AppManager::startRecord()

@@ -107,6 +107,14 @@ public:
     Q_INVOKABLE void receiveWordCards();
     Q_INVOKABLE void receiveSentenceCards();
 
+    void queryToReceive(QString query, DBController &db);
+
+    Q_INVOKABLE void receiveSomethingWords();
+    Q_INVOKABLE void receiveSearchWords();
+    Q_INVOKABLE void receiveUserWords();
+    Q_INVOKABLE void addToUserWord(QString id);
+
+
     //Network
     Q_INVOKABLE void sendSpeech();
 

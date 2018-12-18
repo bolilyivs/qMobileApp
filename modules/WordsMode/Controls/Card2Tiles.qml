@@ -22,7 +22,6 @@ Item {
         countCorrect: corrects
         countCards: root.cards.length
         currentCard: index + 1
-        translations: root.transitions
         anchors.fill: parent
         onNext: checkAnswer(tile)
     }
@@ -39,7 +38,8 @@ Item {
     function initCard() {
         app.receiveWordCards()
         cards = app.currentData
-        console.log(translations)
+        curCard.translations = shuffleTranslations()
+        curCard.card = root.cards[root.index]
     }
 
     function checkAnswer(tile) {

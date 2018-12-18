@@ -26,13 +26,13 @@ Item {
                     text: "Словарь"
                     Layout.fillWidth: true
                     height: dp(150)
-                    onClicked: app.setPage(AppManager.WordView)
+                    onClicked: app.setPage(AppManager.UserWordsPage)
                 }
                 MenuTile {
                     text: "Добавить в слова"
                     Layout.fillWidth: true
                     height: dp(150)
-                    onClicked: app.setPage(AppManager.WordView)
+                    onClicked: app.setPage(AppManager.WordsViewPage)
                 }
                 Item{
                     Layout.fillWidth: true

@@ -33,6 +33,9 @@ void DBController::doQuery(QString squery)
     }
 
     QSqlQuery query = mDB.exec(squery);
+    QSqlError err = query.lastError();
+    qDebug() << err;
+
 
     mMapResults.clear();
 
