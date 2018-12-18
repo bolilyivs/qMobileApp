@@ -3,13 +3,18 @@
 
 #define MAIN_MENU "qrc:/modules/Panels/ChangeModelPanel.qml"
 
+#define REGISTRATION "qrc:/modules/Pages/RegistrationPage.qml"
+#define WORDSVIEWPAGE "qrc:/modules/Pages/WordsViewPage.qml"
+#define USERWORDSPAGE "Pages/UserWordsPage.qml"
+
 #define WORD_TRANSLATION "qrc:/modules/WordsMode/WordTranslation.qml"
 #define TRANSLATION_WORD "qrc:/modules/WordsMode/TranslationWord.qml"
 #define WORD_READING "qrc:/modules/WordsMode/WordReading.qml"
-#define WORD_Constructor "qrc:/modules/WordsMode/WordConstructor.qml"
+#define WORD_CONSTRUCTOR "qrc:/modules/WordsMode/WordConstructor.qml"
 #define WORD_SPEECH "qrc:/modules/WordsMode/WordSpeech.qml"
 #define WORD_REPEATING "qrc:/modules/WordsMode/WordRepeating.qml"
 #define WORD_VIEW "qrc:/modules/WordsMode/WordView.qml"
+#define WORD_CROSSWORD "qrc:/modules/WordsMode/Crossword.qml"
 
 
 #define CHAPTER_1_MENU "qrc:/modules/GrammarMode/Chapter1/Chapter1Menu.qml"

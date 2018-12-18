@@ -70,5 +70,17 @@
         <file>modules/WordsMode/Controls/Card2TilesUnit.qml</file>
         <file>modules/WordsMode/Controls/CardView.qml</file>
         <file>modules/WordsMode/Controls/CardViewUnit.qml</file>
+        <file>modules/WordsMode/Crossword/crossword.js</file>
+        <file>modules/WordsMode/Crossword/CrosswordUnit.qml</file>
+        <file>modules/WordsMode/Crossword/CrosswordGenerator.qml</file>
+        <file>modules/WordsMode/Crossword.qml</file>
+        <file>db/accounts.db</file>
+        <file>db/userData.db</file>
+        <file>db/words.db</file>
+        <file>modules/Pages/WordsViewPage.qml</file>
+        <file>modules/Pages/UserWordsPage.qml</file>
+        <file>modules/Pages/RegistrationPage.qml</file>
+        <file>modules/Controls/CTextField.qml</file>
+        <file>modules/Controls/CButton.qml</file>
     </qresource>
 </RCC>

@@ -1,4 +1,4 @@
-QT += quick texttospeech network multimedia svg
+QT += quick texttospeech network multimedia svg sql
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -14,7 +14,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-    appmanager.cpp
+    appmanager.cpp \
+    dbcontroller.cpp
 
 RESOURCES += qml.qrc
 
@@ -45,10 +46,11 @@ ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
 HEADERS += \
     appmanager.h \
-    stringconstants.h
+    stringconstants.h \
+    dbcontroller.h
 
 contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
     ANDROID_EXTRA_LIBS = \
-        $$PWD/libs/armeabi-v7a/libcrypto.so \
-        $$PWD/libs/armeabi-v7a/libssl.so
+        $$PWD/libs/arm/libcrypto.so \
+        $$PWD/libs/arm/libssl.so
 }

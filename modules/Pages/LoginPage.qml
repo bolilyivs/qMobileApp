@@ -44,47 +44,48 @@ Rectangle {
                 anchors.margins: 20
                 columns: 2
                 columnSpacing: 5
-                Rectangle {
-                    color: "#00000000"
-                    width: 100
-                    Layout.fillHeight: true
-                    UiLabel {
-                        anchors.fill: parent
-                        text: "\uf508"
-                        color: "#BB000000"
-                        font.pixelSize: dp(30)
-                        horizontalAlignment: Text.AlignHCenter
-                    }
+                UiLabel {
+                    width: 50
+                    text: "\uf508"
+                    color: "#BB000000"
+                    font.pixelSize: dp(30)
+                    horizontalAlignment: Text.AlignHCenter
                 }
 
-                TextField {
+                CTextField {
                     id: login
                     Layout.fillWidth: true
                     font.pixelSize: dp(30)
                     color: "#BB000000"
-                    text: "guest"
+                    placeholderText: "Login"
                 }
 
-                Rectangle {
-                    color: "#00000000"
-                    width: 100
-                    Layout.fillHeight: true
-                    UiLabel {
-                        anchors.fill: parent
-                        text: "\uf084"
-                        font.pixelSize: dp(30)
-                        color: "#BB000000"
-                        horizontalAlignment: Text.AlignHCenter
-                    }
+                UiLabel {
+                    width: 50
+                    text: "\uf084"
+                    font.pixelSize: dp(30)
+                    color: "#BB000000"
+                    horizontalAlignment: Text.AlignHCenter
                 }
 
-                TextField {
+                CTextField {
                     id: passwd
                     Layout.fillWidth: true
                     font.pixelSize: dp(30)
                     color: "#BB000000"
                     echoMode: TextInput.Password
-                    text: "guest"
+                    placeholderText: "Password"
+                }
+
+                Item{
+                    width: 50
+                    height: 30
+                }
+
+                CButton{
+                    Layout.fillWidth: true
+                    text: "Регистрация"
+                    onClicked: register()
                 }
             }
         }

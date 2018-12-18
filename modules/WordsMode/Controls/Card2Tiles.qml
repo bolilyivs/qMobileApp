@@ -39,8 +39,6 @@ Item {
     function initCard() {
         app.receiveWordCards()
         cards = app.currentData
-        curCard.card = root.cards[root.index]
-        curCard.translations = shuffleTranslations()
         console.log(translations)
     }
 

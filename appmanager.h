@@ -6,7 +6,8 @@
 #include <QtMultimedia>
 #include <QTextToSpeech>
 #include <stringconstants.h>
-    #include <QRandomGenerator>
+#include <QRandomGenerator>
+#include "dbcontroller.h"
 
 class AppManager: public QObject
 {
@@ -28,9 +29,10 @@ class AppManager: public QObject
 
     QString path;
 public:
-    enum Pages{MainMenu,
+    enum Pages{MainMenu, Registration, WordsViewPage, UserWordsPage
                WordTranslate, TranslateWord, WordReading, WordConstructor, WordSpeech,
                WordRepeating, WordView,
+               Crossword,
                Chapter1Menu,Chapter1SentenceCreator,Chapter1SentenceTranslate,Chapter1Rules,
                Finish
                };
@@ -38,6 +40,10 @@ public:
     Q_ENUM(Pages)
 
 private:
+    //DB
+    DBController mUserDB;
+    DBController mWordsDB;
+
     //User Info
     QString mUserId;
     QString mUserName;
@@ -61,7 +67,6 @@ private:
     qint32 mResTotalCards;
     qint32 mResCorrectCards;
     qint64 mResTime;
-
 
     //Network
     QNetworkAccessManager *manager;

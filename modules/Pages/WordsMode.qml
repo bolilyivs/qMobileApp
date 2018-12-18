@@ -34,7 +34,9 @@ Item {
             columns: 2
 
             Repeater {
-                model: [["Повторение", AppManager.WordRepeating], ["Слово - перевод", AppManager.WordTranslate], ["Перевод - слово", AppManager.TranslateWord], ["Конструктор слов", AppManager.WordConstructor], ["Понимание речи", AppManager.WordSpeech], ["Чтение", AppManager.WordReading]]
+                model: [["Повторение", AppManager.WordRepeating], ["Слово - перевод", AppManager.WordTranslate],
+                    ["Перевод - слово", AppManager.TranslateWord], ["Конструктор слов", AppManager.WordConstructor],
+                    ["Понимание речи", AppManager.WordSpeech], ["Чтение", AppManager.WordReading]]
 
                 MenuTile {
                     text: modelData[0]
@@ -43,6 +45,12 @@ Item {
                     onClicked: app.setPage(modelData[1])
                 }
             }
+        }
+        MenuTile {
+            text: "Кроссворд"
+            Layout.fillWidth: true
+            height: dp(200)
+            onClicked: app.setPage(AppManager.Crossword)
         }
     }
 }

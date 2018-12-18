@@ -11,6 +11,7 @@ Label {
     font.family: localFont.name
     font.bold: true
     font.italic: true
-    font.pixelSize: 12
+    font.pixelSize: dp(30)
+
 
 }

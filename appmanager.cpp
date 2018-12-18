@@ -28,6 +28,12 @@ AppManager::AppManager()
 
     audio = new QAudioInput(format, this);
     connect(manager, &QNetworkAccessManager::finished, this, &AppManager::getSpeech);
+
+    mUserDB.setDBPath("userData.db");
+    mUserDB.createConnection();
+
+    mWordsDB.setDBPath("words.db");
+    mWordsDB.createConnection();
 }
 
 
@@ -38,18 +44,26 @@ void AppManager::setPage(Pages page)
     qDebug() << page;
     switch (page) {
     case Pages::MainMenu: setPageUrl(MAIN_MENU); break;
+
+    case Pages::Registration: setPageUrl(REGISTRATION); break;
+    case Pages::WordsViewPage: setPageUrl(WORDSVIEWPAGE); break;
+    case Pages::UserWordsPage: setPageUrl(USERWORDSPAGE); break;
+
     case Pages::WordTranslate: setPageUrl(WORD_TRANSLATION); break;
     case Pages::WordReading: setPageUrl(WORD_READING); break;
-    case Pages::WordConstructor: setPageUrl(WORD_Constructor); break;
+    case Pages::WordConstructor: setPageUrl(WORD_CONSTRUCTOR); break;
     case Pages::WordSpeech: setPageUrl(WORD_SPEECH); break;
     case Pages::WordRepeating: setPageUrl(WORD_REPEATING); break;
     case Pages::WordView: setPageUrl(WORD_VIEW); break;
     case Pages::TranslateWord: setPageUrl(TRANSLATION_WORD); break;
+    case Pages::Crossword: setPageUrl(WORD_CROSSWORD); break;
+
     case Pages::Chapter1Menu: setPageUrl(CHAPTER_1_MENU); break;
     case Pages::Chapter1SentenceCreator: setPageUrl(CHAPTER_1_SENTENCE_CREATOR); break;
     case Pages::Chapter1SentenceTranslate: setPageUrl(CHAPTER_1_SENTENCE_TRANSALTE); break;
     case Pages::Chapter1Rules: setPageUrl(CHAPTER_1_RULESCHAPTER1); break;
     case Pages::Finish: setPageUrl(FINISH); break;
+
 
 
     }
@@ -142,7 +156,6 @@ void AppManager::say(QString text)
 }
 
 
-//Cards
 void AppManager::receiveWordCards()
 {
     QString word = "word";
@@ -154,24 +167,16 @@ void AppManager::receiveWordCards()
     }
 
     mCurrentData.clear();
-    QVariantMap map;
-    map[word] = "Hello";
-    map[translation] = "Привет";
-    mCurrentData << map;
-    map[word] = "House";
-    map[translation] = "Дом";
-    mCurrentData << map;
-    map[word] = "Tree";
-    map[translation] = "Дерево";
-    mCurrentData << map;
-    map[word] = "Sky";
-    map[translation] = "Небо";
-    mCurrentData << map;
-    map[word] = "Car";
-    map[translation] = "Автомобиль";
-    mCurrentData << map;
+    QString query = "SELECT * FROM word";
+    mWordsDB.doQuery(query);
 
-
+    for(QMap<QString, QString> fmap: mWordsDB.getMapResults()){
+        qDebug() << fmap;
+        QVariantMap map;
+        map[word] = fmap["word"];
+        map[translation] = fmap["translation"];
+        mCurrentData << map;
+    }
 
     emit currentDataChanged();
 }

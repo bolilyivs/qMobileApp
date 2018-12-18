@@ -39,7 +39,7 @@ Item {
         LoginPage {
             id: lg
             onEnter: app.setPage(AppManager.MainMenu)
-        }
+        }    
     }
 
     AppManager {
@@ -60,12 +60,12 @@ Item {
     }
 
     focus: true
-    Keys.onReleased: {
-        if (stView.depth > 1) {
+//    Keys.onReleased: {
+//        if (stView.depth > 1) {
 
-            stView.popDestroy()
-        }
-    }
+//            stView.popDestroy()
+//        }
+//    }
 
     function dp(x) {
         if (dpi < 120) {
