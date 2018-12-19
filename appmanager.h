@@ -13,7 +13,7 @@ class AppManager: public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString userID READ userID NOTIFY userIDChanged)
-    Q_PROPERTY(QString userName READ userName NOTIFY userNameChanged)
+    Q_PROPERTY(QString userName READ userName WRITE setUserName NOTIFY userNameChanged)
     Q_PROPERTY(qint32 userLevel READ userLevel NOTIFY userLevelChanged)
     Q_PROPERTY(qreal userExp READ userExp NOTIFY userExpChanged)
 
@@ -26,6 +26,7 @@ class AppManager: public QObject
     Q_PROPERTY(qint64 resTime READ resTime NOTIFY resTimeChanged)
 
     Q_PROPERTY(QString speechText READ speechText NOTIFY speechTextChanged)
+    Q_PROPERTY(QString serverData READ serverData NOTIFY serverDataChanged)
 
     QString path;
 public:
@@ -69,11 +70,15 @@ private:
     qint64 mResTime;
 
     //Network
-    QNetworkAccessManager *manager;
+    QNetworkAccessManager *speechNetManager;
+    QNetworkAccessManager *serverNetManager;
+
     //Audio
     QAudioInput *audio;
 
     QString mSpeechText;
+
+    QString m_serverData;
 
 public:
     AppManager();
@@ -118,12 +123,23 @@ public:
     //Network
     Q_INVOKABLE void sendSpeech();
 
+    Q_INVOKABLE void enterToServer(QVariantMap data);
+    Q_INVOKABLE void registrarionToServer(QVariantMap data);
+    Q_INVOKABLE void sendUserDB();
+    Q_INVOKABLE void receiveUserDB();
+    void sendToServer(QByteArray query, QString file);
+    void getFromServer(QNetworkReply *reply);
 
     //Speech
     Q_INVOKABLE void startRecord();
     Q_INVOKABLE void stopRecord();
 
     QString speechText(){return mSpeechText;}
+
+    QString serverData() const
+    {
+        return m_serverData;
+    }
 
 signals:
     void userIDChanged();
@@ -137,9 +153,19 @@ signals:
     void resTimeChanged();
     void speechTextChanged();
 
+    void serverDataChanged();
+
 public slots:
     void getSpeech(QNetworkReply *reply);
 
+    void setUserName(QString userName)
+    {
+        if (mUserName == userName)
+            return;
+
+        mUserName = userName;
+        emit userNameChanged();
+    }
 };
 
 

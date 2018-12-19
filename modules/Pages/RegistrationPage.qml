@@ -14,9 +14,6 @@ import "../Panels"
 Rectangle {
     color: "#00000000"
 
-    signal enter
-    signal register
-
     ColumnLayout {
         anchors.fill: parent
 
@@ -126,7 +123,15 @@ Rectangle {
                     Layout.fillHeight: true
                     Layout.fillWidth: true
                     font.pixelSize: dp(30)
-                    onClicked: enter()
+                    onClicked:{
+                        if (passwd.text != passwd2.text){
+                            return
+                        }
+                        var data = {"login":login.text, "password":passwd.text, "email":email.text}
+                        app.registrarionToServer(data)
+                        stView.popDestroy()
+                    }
+
                     background: Rectangle {
                         color: "transparent"
                     }

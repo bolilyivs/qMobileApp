@@ -42,8 +42,7 @@ Image {
                 anchors.fill: parent
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                text: "\uf007 " + app.userName + " | \uf161 " + app.userLevel
-                      + " | \uf217 " + app.userExp
+                text: app.userName
                 font.pixelSize: 18
                 color: "#BBFFFFFF"
             }

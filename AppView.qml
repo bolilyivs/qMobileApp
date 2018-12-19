@@ -3,6 +3,7 @@ import QtQuick.Window 2.11
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.4
 import AppManager 1.0
+import QtQuick.Dialogs 1.3
 import "modules/Panels"
 import "modules/Pages"
 
@@ -38,7 +39,10 @@ Item {
         id: pages
         LoginPage {
             id: lg
-            onEnter: app.setPage(AppManager.MainMenu)
+            onEnter:{
+                app.enterToServer(postData);
+
+            }
             onRegister: app.setPage(AppManager.Registration)
         }    
     }
@@ -49,6 +53,30 @@ Item {
             stView.push(createObject(currentPageUrl, pages))
         }
         onSpeechTextChanged: root.speechText = speechText
+        onServerDataChanged: {
+            var param = serverData.split(" ")
+            console.log(serverData)
+            if(param.length > 0){
+                if(param[0] == "login" && param[1] != "false"){
+                    app.userName = param[1]
+                    console.log(app.userName);
+                    app.setPage(AppManager.MainMenu)
+                }else if(param[0] == "login"){
+                    md.text = "Нет такого пользователя!"
+                    md.open()
+
+                }
+            }
+        }
+        onUserNameChanged: {
+           console.log(app.userName);
+        }
+    }
+
+    MessageDialog{
+        id: md
+        standardButtons: StandardButton.Ok
+
     }
 
     FontLoader {

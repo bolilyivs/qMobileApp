@@ -13,6 +13,7 @@ import "../Panels"
 
 Rectangle {
     color: "#00000000"
+    property var postData
 
     signal enter
     signal register
@@ -115,7 +116,10 @@ Rectangle {
                     Layout.fillHeight: true
                     Layout.fillWidth: true
                     font.pixelSize: dp(30)
-                    onClicked: enter()
+                    onClicked:{
+                        postData = {"login" : login.text, "password":passwd.text}
+                        enter()
+                    }
                     background: Rectangle {
                         color: "transparent"
                     }

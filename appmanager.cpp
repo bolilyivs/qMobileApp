@@ -12,7 +12,8 @@ AppManager::AppManager()
     voiceInit = false;
 
     //Speech to text
-    manager = new QNetworkAccessManager(this);
+    speechNetManager = new QNetworkAccessManager(this);
+    serverNetManager = new QNetworkAccessManager(this);
 
     QAudioFormat format;
     format.setSampleRate(16000);
@@ -27,8 +28,8 @@ AppManager::AppManager()
     }
 
     audio = new QAudioInput(format, this);
-    connect(manager, &QNetworkAccessManager::finished, this, &AppManager::getSpeech);
-
+    connect(speechNetManager, &QNetworkAccessManager::finished, this, &AppManager::getSpeech);
+    connect(serverNetManager, &QNetworkAccessManager::finished, this, &AppManager::getFromServer);
     mUserDB.setDBPath("userData.db");
     mUserDB.createConnection();
 
@@ -198,12 +199,14 @@ void AppManager::receiveSearchWords()
 }
 void AppManager::receiveUserWords()
 {
-    QString query = "SELECT id FROM data ORDER BY RANDOM() LIMIT 30";
+    QString query = "SELECT word_id FROM data ORDER BY RANDOM() LIMIT 30";
     mUserDB.doQuery(query);
     query = "SELECT * FROM word WHERE id IN ( ";
+    qDebug() << mUserDB.getMapResults();
     for(QMap<QString, QString> fmap: mUserDB.getMapResults()){
         QVariantMap map;
-        query += fmap["id"] + ",";
+        query += fmap["word_id"] + ",";
+
     }
 
    query[query.size()-1] = ')';
@@ -215,6 +218,7 @@ void AppManager::addToUserWord(QString id)
 {
     QString query = "INSERT INTO data (word_id) values (" +id + ")";
     qDebug() << query;
+
     mUserDB.doQuery(query);
 }
 
@@ -319,15 +323,64 @@ void AppManager::sendSpeech()
     request.setRawHeader("Content-Type","audio/raw;encoding=signed-integer;bits=16;rate=16000;endian=little");
 
     qDebug() << "test";
-    QNetworkReply* reply = manager->post(request, &buffer);
+    QNetworkReply* reply = speechNetManager->post(request, &buffer);
     qDebug() << reply;
     qDebug() << "test2";
 
 
     QEventLoop eLoop;
-    QObject::connect(manager, &QNetworkAccessManager::finished, &eLoop, &QEventLoop::quit);
+    QObject::connect(speechNetManager, &QNetworkAccessManager::finished, &eLoop, &QEventLoop::quit);
     eLoop.exec( QEventLoop::ExcludeUserInputEvents );
 }
+
+void AppManager::sendUserDB()
+{
+
+}
+
+void AppManager::receiveUserDB()
+{
+
+}
+
+void AppManager::sendToServer(QByteArray query, QString file)
+{
+    QUrl serviceUrl = QUrl(SERVER_ADDR + file);
+
+    QNetworkRequest networkRequest(serviceUrl);
+    networkRequest.setHeader(QNetworkRequest::ContentTypeHeader,"application/x-www-form-urlencoded");
+
+    serverNetManager->post(networkRequest, query);
+
+    QEventLoop eLoop;
+    QObject::connect(serverNetManager, &QNetworkAccessManager::finished, &eLoop, &QEventLoop::quit);
+    eLoop.exec( QEventLoop::ExcludeUserInputEvents );
+}
+
+void AppManager::getFromServer(QNetworkReply *reply)
+{
+    m_serverData = reply->readAll();
+    qDebug() << m_serverData;
+    emit serverDataChanged();
+}
+
+void AppManager::enterToServer(QVariantMap data)
+{
+    QByteArray query;
+    query.append("login="+data["login"].toString().toUtf8());
+    query.append("&password="+data["password"].toString().toUtf8());
+    sendToServer(query, SERVER_LOGIN);
+}
+
+void AppManager::registrarionToServer(QVariantMap data)
+{
+    QByteArray query;
+    query.append("login="+data["login"].toString().toUtf8());
+    query.append("&password="+data["password"].toString().toUtf8());
+    query.append("&email="+data["email"].toString().toUtf8());
+    sendToServer(query, SERVER_REGISTRATION);
+}
+
 void AppManager::getSpeech(QNetworkReply *reply)
 {
     buffer.close();

@@ -23,5 +23,8 @@
 #define CHAPTER_1_RULESCHAPTER1 "qrc:/modules/GrammarMode/Chapter1/RulesChapter1.qml"
 #define FINISH "qrc:/modules/WordsMode/Finish.qml"
 
+#define SERVER_ADDR "http://j95266xi.beget.tech/"
+#define SERVER_LOGIN "login.php"
+#define SERVER_REGISTRATION "registration.php"
 
 #endif // STRINGCONSTANTS_H

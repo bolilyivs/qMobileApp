@@ -20,15 +20,14 @@ Rectangle {
             Layout.fillHeight: true
             Layout.fillWidth: true
             CLabel {
-                text: "Guest"
-                font.pixelSize: 30
+                text: app.userName
+                font.pixelSize: 40
                 horizontalAlignment: Text.AlignLeft
                 verticalAlignment: Text.AlignBottom
                 Layout.fillHeight: true
                 Layout.fillWidth: true
             }
             CLabel {
-                text: "Level 5"
                 horizontalAlignment: Text.AlignLeft
                 verticalAlignment: Text.AlignTop
                 Layout.fillHeight: true
