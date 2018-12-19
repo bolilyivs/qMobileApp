@@ -15,6 +15,12 @@ Item {
     property bool isCorrect: true
     property var cards
     property int index: 0
+    property var correctCards: []
+
+    function addCorrectCard(){
+        correctCards.push(cards[index]["id"])
+        console.log(correctCards)
+    }
 
     CardReadUnit{
         id: curCard
@@ -48,8 +54,10 @@ Item {
             return
         }
         tile.state = "correct"
-        if(isCorrect)
+        if(isCorrect){
+            addCorrectCard()
             corrects++
+        }
         isCorrect = true
         index++
         timer.start()
@@ -58,8 +66,8 @@ Item {
     function nextCard(){
         if(index === cards.length){
             stView.popDestroy()
+            app.sendWordModeResults(correctCards, {"correctCards": corrects, "totalCards": cards.length})
             app.setPage(AppManager.Finish)
-            app.sendWordModeResults({"correctCards": corrects, "totalCards": cards.length})
             return
         }
 

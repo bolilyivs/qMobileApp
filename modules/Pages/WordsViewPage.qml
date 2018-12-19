@@ -30,6 +30,9 @@ Rectangle {
             bgcolor: "#BBFFFFFF"
             color: "#BB000000"
             placeholderText: "Search"
+            validator: RegExpValidator{
+                 regExp: /^[a-zA-Z]+$/
+            }
         }
 
         Rectangle {
@@ -66,7 +69,10 @@ Rectangle {
                     Layout.fillHeight: true
                     Layout.fillWidth: true
                     font.pixelSize: dp(30)
-                    onClicked: enter()
+                    onClicked:{
+                        app.receiveSearchWords(search.text)
+                    }
+
                     background: Rectangle {
                         color: "transparent"
                     }
@@ -113,7 +119,12 @@ Rectangle {
             }
             MouseArea{
                 anchors.fill: parent
-                onClicked: app.addToUserWord(dbId)
+                onClicked:{
+                    app.addToUserWord(dbId)
+                    md.text = modelData["word"] +  " добавлено!"
+                    md.open()
+                }
+
             }
         }
     }

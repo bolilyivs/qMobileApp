@@ -115,8 +115,34 @@ QVariantList AppManager::shuffle(QVariantList list)
 
 
 //Send results
-void AppManager::sendWordModeResults(QVariantMap map)
+//Send results
+QString AppManager::currentMode()
 {
+    QString mode = "";
+    switch (mCurrentPage) {
+    case Pages::WordTranslate: mode = "wt"; break;
+    case Pages::WordReading: mode = "reading"; break;
+    case Pages::WordConstructor: mode = "construct"; break;
+    case Pages::WordSpeech: mode = "speech"; break;
+    case Pages::WordRepeating: mode = "repeat"; break;
+    case Pages::WordView: mode = "view"; break;
+    case Pages::TranslateWord: mode = "tw"; break;
+    case Pages::Crossword: mode = "wt"; break;
+    }
+    return mode;
+}
+
+
+void AppManager::sendWordModeResults(QVariantList list, QVariantMap map)
+{
+    QString mode = currentMode();
+
+    QString query = "";
+
+    for(QVariant &value : list){
+        query = "UPDATE data SET "+mode+" = 'true' WHERE word_id = " + value.toString() + "; ";
+        mUserDB.doQuery(query);
+    }
     if(map.contains("time"))
         mResTime = map["time"].toLongLong();
     if(map.contains("correctCards"))
@@ -193,13 +219,24 @@ void AppManager::receiveSomethingWords()
     QString query = "SELECT * FROM word ORDER BY RANDOM() LIMIT 30";
     queryToReceive(query, mWordsDB);
 }
-void AppManager::receiveSearchWords()
+void AppManager::receiveSearchWords(QString word)
 {
-
+    QString query = "SELECT * FROM word WHERE word LIKE '%"  + word +"%' ORDER BY RANDOM() LIMIT 30";
+    queryToReceive(query, mWordsDB);
 }
 void AppManager::receiveUserWords()
 {
-    QString query = "SELECT word_id FROM data ORDER BY RANDOM() LIMIT 30";
+
+    QString mode = currentMode();
+
+    QString query = "SELECT word_id FROM data ORDER BY RANDOM() LIMIT 10";
+    qDebug() << mode;
+
+    if(mode != ""){
+        query = "SELECT word_id FROM data WHERE "+ mode + " = false ORDER BY RANDOM() LIMIT 10";
+    }
+
+
     mUserDB.doQuery(query);
     query = "SELECT * FROM word WHERE id IN ( ";
     qDebug() << mUserDB.getMapResults();
@@ -217,6 +254,14 @@ void AppManager::receiveUserWords()
 void AppManager::addToUserWord(QString id)
 {
     QString query = "INSERT INTO data (word_id) values (" +id + ")";
+    qDebug() << query;
+
+    mUserDB.doQuery(query);
+}
+
+void AppManager::removeUserWord(QString id)
+{
+    QString query = "DELETE FROM data WHERE word_id = " + id ;
     qDebug() << query;
 
     mUserDB.doQuery(query);
@@ -311,6 +356,8 @@ void AppManager::stopRecord()
     buffer.close();
     sendSpeech();
 }
+
+
 
 void AppManager::sendSpeech()
 {

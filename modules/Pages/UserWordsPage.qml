@@ -23,21 +23,13 @@ Rectangle {
     ColumnLayout {
         anchors.fill: parent
 
-        CTextField {
-            id: search
-            Layout.fillWidth: true
-            font.pixelSize: dp(30)
-            bgcolor: "#BBFFFFFF"
-            color: "#BB000000"
-            placeholderText: "Search"
-        }
-
         Rectangle {
             Layout.fillHeight: true
             Layout.fillWidth: true
             radius: 6
             color: "#CCFFFFFF"
             ListView{
+                id: lv
                 clip: true
                 anchors.fill: parent
                 model: app.currentData
@@ -47,41 +39,7 @@ Rectangle {
 
         }
 
-        Rectangle {
-            height: 150
-            Layout.fillWidth: true
-            color: "#00000000"
-            Image {
-                id: name
-                source: "qrc:/images/bottom.svg"
-                anchors.fill: parent
-            }
 
-            RowLayout {
-                anchors.fill: parent
-                anchors.topMargin: 30
-                Button {
-                    text: "\uf2f6 Поиск"
-                    font.family: aweFont.name
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                    font.pixelSize: dp(30)
-                    onClicked: enter()
-                    background: Rectangle {
-                        color: "transparent"
-                    }
-                    contentItem: Text {
-                        text: parent.text
-                        font: parent.font
-                        opacity: enabled ? 1.0 : 0.3
-                        color: parent.down ? "#BB000000" : "#BBFFFFFF"
-                        horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
-                        elide: Text.ElideRight
-                    }
-                }
-            }
-        }
     }
 
     Component {
@@ -92,25 +50,40 @@ Rectangle {
             color: "#00000000"
             border.color: "#BB000000"
             property int dbId: modelData["id"]
-            Column {
+            RowLayout{
                 anchors.fill: parent
-                CLabel {
-                    color: "#BB000000";
-                    text: '<b>Word:</b> ' + modelData["word"]
-                    font.pixelSize: 20
+                ColumnLayout {
                     Layout.fillHeight: true
                     Layout.fillWidth: true
-                    verticalAlignment: Text.AlignVCenter
+                    CLabel {
+                        color: "#BB000000";
+                        text: '<b>Word:</b> ' + modelData["word"]
+                        font.pixelSize: 20
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                        verticalAlignment: Text.AlignVCenter
+                    }
+                    CLabel {
+                        color: "#BB000000";
+                        text: '<b>Translation:</b> ' + modelData["translation"]
+                        font.pixelSize: 20
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                        verticalAlignment: Text.AlignVCenter
+                    }
                 }
-                CLabel {
-                    color: "#BB000000";
-                    text: '<b>Translation:</b> ' + modelData["translation"]
-                    font.pixelSize: 20
+                MTButton {
+                    text: "\uf2ed"
                     Layout.fillHeight: true
-                    Layout.fillWidth: true
-                    verticalAlignment: Text.AlignVCenter
+                    width: 60
+                    onClicked: {
+                        app.removeUserWord(dbId)
+                        app.receiveUserWords()
+                    }
                 }
             }
+
+
         }
     }
 }

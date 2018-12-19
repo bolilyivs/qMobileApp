@@ -102,7 +102,7 @@ public:
     Q_INVOKABLE QVariantList shuffle(QVariantList);
 
     //Send results
-    Q_INVOKABLE void sendWordModeResults(QVariantMap);
+    Q_INVOKABLE void sendWordModeResults(QVariantList, QVariantMap map);
     Q_INVOKABLE void sendGrammarModeResults(QVariantMap);
 
     //Speech
@@ -115,10 +115,10 @@ public:
     void queryToReceive(QString query, DBController &db);
 
     Q_INVOKABLE void receiveSomethingWords();
-    Q_INVOKABLE void receiveSearchWords();
+    Q_INVOKABLE void receiveSearchWords(QString word);
     Q_INVOKABLE void receiveUserWords();
     Q_INVOKABLE void addToUserWord(QString id);
-
+    Q_INVOKABLE void removeUserWord(QString id);
 
     //Network
     Q_INVOKABLE void sendSpeech();
@@ -140,6 +140,8 @@ public:
     {
         return m_serverData;
     }
+
+    QString currentMode();
 
 signals:
     void userIDChanged();

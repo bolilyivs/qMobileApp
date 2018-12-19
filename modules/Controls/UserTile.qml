@@ -12,6 +12,15 @@ Rectangle {
             height: 100
             Layout.fillHeight: true
             width: height
+            clip: true
+
+            UiLabel{
+                text: "\uf007"
+                anchors.fill: parent
+                font.pixelSize: 30
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+            }
 
             radius: height / 2
             color: "#BBFFFFFF"

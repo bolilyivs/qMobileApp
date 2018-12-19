@@ -11,6 +11,12 @@ Item {
     property bool isCorrect: true
     property var cards
     property int index: 0
+    property var correctCards: []
+
+    function addCorrectCard(){
+        correctCards.push(cards[index]["id"])
+        console.log(correctCards)
+    }
 
     Component.onCompleted: initCard()
 
@@ -26,6 +32,7 @@ Item {
     function checkWord(text) {
         console.log(text, curCard.card["word"])
         if (text.toLowerCase().trim() === curCard.card["word"].toLowerCase()) {
+            addCorrectCard()
             index++
             corrects++
             nextCard()
@@ -35,11 +42,8 @@ Item {
     function nextCard() {
         if (index === cards.length) {
             stView.popDestroy()
+            app.sendWordModeResults(correctCards, {"correctCards": corrects, "totalCards": cards.length})
             app.setPage(AppManager.Finish)
-            app.sendWordModeResults({
-                                        "correctCards": corrects,
-                                        "totalCards": cards.length
-                                    })
             return
         }
 

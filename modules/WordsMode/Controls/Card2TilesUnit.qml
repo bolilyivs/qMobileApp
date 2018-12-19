@@ -30,7 +30,7 @@ Item {
             countCorrect: root.countCorrect
             countCards: root.countCards
             word: card["word"]
-            transcription: card["transcription"]
+            //transcription: card["transcription"]
         }
 
         GridLayout {

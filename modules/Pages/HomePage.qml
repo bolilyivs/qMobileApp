@@ -15,6 +15,7 @@ Item {
         UserTile {
             height: 100
             Layout.fillWidth: true
+
         }
         Rectangle {
             color: "#00000000"

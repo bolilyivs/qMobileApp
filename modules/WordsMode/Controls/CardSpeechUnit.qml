@@ -5,12 +5,19 @@ import AppManager 1.0
 import "../../Controls"
 
 Item {
+    id: root
     property var card
     property var translations
 
     property int countCorrect
     property int countCards
     property int currentCard
+
+
+    onCardChanged: {
+        if(ep.placeholderText == "Неверно")
+            ep.placeholderText = "Верно!"
+    }
 
     signal next(var text)
 
@@ -28,15 +35,33 @@ Item {
             isVisibleText: false
         }
 
-        EditPlace {
-            id: ep
+        Rectangle{
+            height: 80
+            color: "transparent"
+            Layout.fillWidth: true
+            CTextField {
+                id: ep
+                anchors.fill: parent
+                font.pixelSize: 25
+                bgcolor: "#BBFFFFFF"
+                placeholderText: "Введите слово"
+            }
+        }
+
+
+
+        Item{
             Layout.fillWidth: true
             Layout.fillHeight: true
         }
 
         ControlPanel {
             Layout.fillWidth: true
-            onClicked: next(ep.text)
+            onClicked:{
+                ep.placeholderText = "Неверно"
+                next(ep.text)
+                ep.text = ""
+            }
         }
     }
 }

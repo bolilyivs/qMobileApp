@@ -29,12 +29,12 @@ Item {
                     id: hp
                 }
 
-                GrammarMode {
-                    id: wm2
-                }
-
                 WordsMode {
                     id: wm
+                }
+
+                GrammarMode {
+                    id: wm2
                 }
 
 //                GameModePage {
@@ -44,8 +44,13 @@ Item {
         }
 
         MenuNavigation {
+            id: mn
             Layout.fillWidth: true
             height: 150
+            onIndexChanged: {
+                sv.currentIndex = index
+            }
+            currentIndex: sv.currentIndex
         }
     }
 }

@@ -11,6 +11,12 @@ Item {
     property bool isCorrect: true
     property var cards
     property int index: 0
+    property var correctCards: []
+
+    function addCorrectCard(){
+        correctCards.push(cards[index]["id"])
+        console.log(correctCards)
+    }
 
     Component.onCompleted: initCard()
 
@@ -24,16 +30,15 @@ Item {
     }
 
     function nextCard() {
+        addCorrectCard()
         index++
         corrects++
         console.log("test")
         if (index === cards.length) {
             stView.popDestroy()
+            app.sendWordModeResults(correctCards, {"correctCards": corrects, "totalCards": cards.length})
             app.setPage(AppManager.Finish)
-            app.sendWordModeResults({
-                                        "correctCards": corrects,
-                                        "totalCards": cards.length
-                                    })
+            console.log("correctCards", corrects)
             return
         }
 

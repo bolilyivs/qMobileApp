@@ -5,6 +5,7 @@ import AppManager 1.0
 import "../../Controls"
 
 Item {
+    id:root
     property var card
     property var translations
 
